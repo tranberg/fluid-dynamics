@@ -1,0 +1,81 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage[margin=3.4cm]{geometry}
+\usepackage{lipsum}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage[draft]{fixme}
+\usepackage{siunitx}
+\usepackage{color}
+
+\usepackage[sc]{mathpazo}
+\linespread{1.05}
+\parindent 0pt
+\parskip 4pt
+\numberwithin{equation}{section}
+
+\usepackage{booktabs}
+\setlength{\heavyrulewidth}{0.15em}
+\setlength{\lightrulewidth}{0.08em}
+
+% Framed text
+\usepackage{framed}
+\definecolor{shadecolor}{rgb}{1,0.8,0.3}
+
+% Where to look for figures
+\graphicspath{{./figures/}}
+
+% Macros
+\newcommand{\sref}[1]{Section~\ref{#1}}
+\newcommand{\fref}[1]{Figure~\ref{#1}}
+\newcommand{\tref}[1]{Table~\ref{#1}}
+\renewcommand{\eqref}[1]{(\ref{#1})}
+
+% Helpful definitions
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\diff}[2]{\frac{d #1}{d #2}}
+\newcommand{\ddiff}[2]{\frac{d^2 #1}{d #2^2}}
+\newcommand{\dddiff}[2]{\frac{d^3 #1}{d #2^3}}
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ppdiff}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\renewcommand{\leadsto}{&\Downarrow\notag\\}
+\newcommand{\require}{\overset{!}{=}}
+
+
+
+% Title stuff
+\title{Lecture Notes on Fluid Dynamics - Draft}
+\author{}
+\date{Last edited: \today}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+
+% \begin{abstract}\noindent
+% \end{abstract}
+
+\setcounter{tocdepth}{3}
+\tableofcontents
+
+\include{week-1}
+\include{week-2}
+\include{week-3}
+\include{week-4}
+\include{week-5}
+\include{week-6}
+\include{week-7}
+
+\nocite{*}
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+\end{document}

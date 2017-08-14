@@ -1,0 +1,457 @@
+\section{Derivation of Navier-Stokes equation (8-20)}
+The goal of this section is to find an equation, which describes the spatio-temporal evolution of the velocity field $\vec{u}(\vec{r},t)$. This is the Navier-Stokes equation, which is the most fundamental equation in Fluid Dynamics.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.4\textwidth]{week2/velocity-field}
+    \caption{}
+    \label{fig:velocity-field}
+\end{figure}
+
+We want to describe the motion of a fluid particle. We start with Newton's second law of Classical Mechanics
+\begin{equation}
+\vec{F} = \diff{}{t}\left(m\vec{u}\right).
+\end{equation}
+The equation states that the forces acting on the particle equals its change (the time derivative) of momentum (the parenthesis).
+\begin{framed}
+\textbf{Remark:} in Fluid Dynamics we look not only at one fluid particle, but at all fluid particles.
+\end{framed}
+\begin{equation}
+\diff{}{t}\left(m\vec{u}\right) = \diff{m}{t}\vec{u}+m\diff{\vec{u}}{t}=\rho\Delta V\diff{\vec{u}}{t}.
+\end{equation}
+The mass of a fluid particle is constant and does not change over time, hence the time derivative term is zero. We also used the relation
+\begin{equation}
+m=\rho\Delta V.
+\end{equation}
+Given the field description $\vec{u}=\vec{u}(\vec{r},t)$, we have to be a little careful with $\diff{\vec{u}}{t}$. The following is wrong:
+\begin{equation}
+\diff{\vec{u}}{t} = \diff{\vec{u}(\vec{r},t)}{t} = \lim_{\Delta t \rightarrow 0} \frac{\vec{u}(\vec{r},t+\Delta t) - \vec{u}(\vec{r},t)}{\Delta t}
+\end{equation}
+See the example in \fref{fig:fluid-particles}.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.8\textwidth]{week2/fluid-particles}
+    \caption{}
+    \label{fig:fluid-particles}
+\end{figure}
+
+The correct approach is to follow one fluid particle on its pathline (trajectory) $\vec{r}=\vec{r}(\vec{r}_0,t_0;t)$. See \fref{fig:fluid-particle}.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.4\textwidth]{week2/fluid-particle}
+    \caption{}
+    \label{fig:fluid-particle}
+\end{figure}
+
+\begin{align}
+\diff{\vec{u}}{t} &= \diff{\vec{u}\left(\vec{r}\left(\vec{r}_1,t_0;t\right),t\right)}{t}\\
+&=\diff{\vec{u}(x(\vec{r}_0,t_0;t),y(\vec{r}_0,t_0;t),z(\vec{r}_0,t_0;t))}{t}\\
+&=\pdiff{\vec{u}}{x}\diff{x}{t} + \pdiff{\vec{u}}{y}\diff{y}{t} + \pdiff{\vec{u}}{z}\diff{z}{t} + \pdiff{\vec{u}}{t}\diff{t}{t}\\
+&= \left(u_x\pdiff{}{x} + u_y\pdiff{}{y} + u_z\pdiff{}{z}\right)\vec{u}+\pdiff{\vec{u}}{t}
+\end{align}
+\fxnote{should we include the calculus here or make an appendix?}
+The terms in parentheses is the definition of divergence giving the final expression
+\begin{equation}
+\diff{\vec{u}}{t} = \pdiff{\vec{u}}{t} + \left(\vec{u}\cdot\vec{\nabla}\right)\vec{u}.
+\end{equation}
+
+\begin{framed}
+The material derivative is defined as
+\begin{equation}
+\diff{}{t}\partial_t+\vec{u}\cdot\vec{\nabla}=\frac{D}{Dt}=D_t.
+\end{equation}
+Whenever we have the time derivative of a field, like $\vec{u}(\vec{r},t)$, then we have to "go with the fluid particle" and use the material derivative.
+\end{framed}
+We now go back to Newton's second equation:
+\begin{equation}
+\diff{}{t}(m\vec{u}) = \rho\Delta V\left(\partial_t + \vec{u}\cdot\vec{\nabla}\right)\vec{u} = \vec{F} = \vec{F}_\mathrm{external} + \vec{F}_\mathrm{surrounding}
+\end{equation}
+\fxnote{include the external force example?}
+The surrounding force can be decomposed into
+\begin{equation}
+\vec{F}_\mathrm{surrounding} = \vec{F}_\mathrm{pressure} + \vec{F}_\mathrm{friction}
+\end{equation}
+The surrounding fluid particles push the "sandwiched" fluid particle around; they exert pressure. Mutual friction between neighboring fluid particles due to relative and rotational motion, deformation and compression.
+
+
+\subsection{Pressure force}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.4\textwidth]{week2/pressure-force}
+    \caption{}
+    \label{fig:pressure-force}
+\end{figure}
+
+\begin{align}
+\left(\vec{F}_\mathrm{pressure}\right)_z &= \vec{F}_\mathrm{pressure}^\mathrm{top} + \vec{F}_\mathrm{pressure}^\mathrm{bottom}\\
+&= -p\left(x,y,z+\frac{\Delta z}{2}\right)\Delta x \Delta y + p\left(x,y,z-\frac{\Delta z}{2}\right)\Delta x \Delta y \\
+\begin{split}&= -\left(p(x,y,z)+\pdiff{p(x,y,z)}{z}\frac{\Delta z}{2}\right)\Delta x \Delta y\\
+&\hspace{4.5mm}+ \left(p(x,y,z)+\pdiff{p(x,y,z)}{z}\left(-\frac{\Delta z}{2}\right)\right)\Delta x \Delta y
+\end{split}\\
+&= -\pdiff{p(x,y,z)}{z} \Delta x \Delta y \Delta z
+\end{align}
+Using $\Delta x \Delta y \Delta z = \Delta V$ the pressure force density is
+\begin{equation}
+f_\mathrm{pressure} = \frac{\vec{F}_\mathrm{pressure}}{\Delta V} = -\vec{\nabla}p(\vec{r},t)
+\end{equation}
+
+
+\subsection{Friction force}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.4\textwidth]{week2/friction-force}
+    \caption{}
+    \label{fig:friction-force}
+\end{figure}
+
+We consider the neighboring fluid particles above and below as sketched in \fref{fig:friction-force}.
+
+\begin{equation}
+\begin{split}
+\left(\vec{F}_\mathrm{friction}^\mathrm{top+bottom}\right)_x &= \frac{\mu}{\Delta z}\Delta x \Delta y \left(U_x(x,y,z+\Delta z)-u_x(x,y,z)\right) \\
+&\hspace{4.5mm}+ \frac{\mu}{\Delta z}\Delta x \Delta y \left(U_x(x,y,z-\Delta z)-u_x(x,y,z)\right)
+\end{split}
+\end{equation}
+
+If $u_x(x,y,z+\Delta z)>u_x(x,y,z)$, then the fluid particle above pulls the sandwiched fluid particle with it.
+
+Taylor series expansion and keep up to second order terms
+\begin{align}
+\begin{split}
+\left(\vec{F}_\mathrm{friction}^\mathrm{top+bottom}\right)_x &= \frac{\mu\Delta x  \Delta y}{\Delta z}
+\left\{u_x(x,y,z)+\pdiff{u_x(x,y,z)}{z}\Delta z + \ppdiff{u_x(x,y,z)}{z}\frac{\Delta z^2}{2} + \cdots \right.\\
+&\hspace{4.5mm} - u_x(x,y,z) + u_x(x,y,z)+\pdiff{u_x(x,y,z)}{z}(-\Delta z) \\
+&\hspace{4.5mm} + \left. \ppdiff{u_x(x,y,z)}{z}\frac{(-\Delta z)^2}{2} + \cdots - u_x(x,y,z) \right\}
+\end{split}\\
+&= \mu \Delta x \Delta y \Delta z \ppdiff{u_x(x,y,z)}{z}
+\end{align}
+
+front + back:
+\begin{equation}
+\left(\vec{F}_\mathrm{friction}^\mathrm{front+back}\right)_x = \mu\Delta V \ppdiff{u_x(x,y,z)}{y}
+\end{equation}
+
+Most general expression of the friction force:
+\begin{equation}
+\frac{\vec{F}_\mathrm{friction}}{\Delta V} = \vec{f}_\mathrm{friction} \left(\pdiff{^2u_i}{x_k\partial x_l}\right) = \vec{f}_\mathrm{friction} (\vec{\nabla},\vec{\nabla},\vec{u})
+\end{equation}
+
+The task is to build a vector $\vec{f}$ from a combination of three vectors $\vec{a}=\vec{\nabla}, \vec{b}=\vec{\nabla}, \vec{c}=\vec{u}$, such that
+\begin{equation}
+\vec{f} = \alpha\left(\vec{a}\cdot\vec{b}\right)\vec{c} + \beta\left(\vec{a}\cdot\vec{c}\right)\vec{b} + \alpha \left(\vec{b}\cdot\vec{c}\right)\vec{a}
+\end{equation}
+
+The solution:
+\begin{equation}
+\vec{f}_\mathrm{friction} = \mu\left(\vec{\nabla}\cdot\vec{\nabla}\right)\vec{u} + \left(\mu_v+\frac{\mu}{3}\right)\vec{\nabla}\left(\vec{\nabla}\cdot\vec{u}\right),
+\end{equation}
+where $\mu$ is the shear (dynamic) viscosity and $\mu_v$ is the compression (bulk) viscosity.
+
+Navier-Stokes equation:
+\begin{equation}
+\rho\left(\partial_t+\left(\vec{u}\cdot\vec{\nabla}\right)\right)\vec{u} = \vec{f}\mathrm{ext}-\vec{\nabla}p + \mu\left(\vec{\nabla}\cdot\vec{\nabla}\right)\vec{u} + \left(\mu_v+\frac{\mu}{3}\right)\vec{\nabla}\left(\vec{\nabla}\cdot\vec{u}\right)
+\end{equation}
+where
+\begin{align}
+\vec{u} &= \vec{u}\left(\vec{r},t\right)\\
+p &= p\left(\vec{r},t\right)\\
+\rho &= \rho\left(\vec{r},t\right)\\
+\vec{f}_\mathrm{ext} &= \vec{f}_\mathrm{ext}\left(\vec{r},t\right)
+\end{align}
+
+
+\subsection{Navier-Stokes equation in components}
+\begin{align}
+\begin{split}\rho
+\begin{pmatrix}
+\pdiff{u_x}{t} \\ \pdiff{u_y}{t} \\ \pdiff{u_z}{t}
+\end{pmatrix} +
+\rho
+\begin{pmatrix}
+\left(u_x\pdiff{}{x}+u_y\pdiff{}{y}+u_z\pdiff{}{z}\right)u_x \\
+\left(u_x\pdiff{}{x}+u_y\pdiff{}{y}+u_z\pdiff{}{z}\right)u_y \\
+\left(u_x\pdiff{}{x}+u_y\pdiff{}{y}+u_z\pdiff{}{z}\right)u_z
+\end{pmatrix} &= 
+\begin{pmatrix}
+f_x^\mathrm{ext} \\ f_y^\mathrm{ext} \\ f_z^\mathrm{ext}
+\end{pmatrix} -
+\begin{pmatrix}
+\pdiff{p}{x} \\ \pdiff{p}{y} \\ \pdiff{p}{z}
+\end{pmatrix} \\
+&\hspace{4.5mm}+
+\mu
+\begin{pmatrix}
+\left(\ppdiff{}{x}+\ppdiff{}{y}+\ppdiff{}{z}\right)u_x \\
+\left(\ppdiff{}{x}+\ppdiff{}{y}+\ppdiff{}{z}\right)u_y \\
+\left(\ppdiff{}{x}+\ppdiff{}{y}+\ppdiff{}{z}\right)u_z
+\end{pmatrix} \\
+&\hspace{4.5mm}+
+\left(\mu_v + \frac{\mu}{3}\right) +
+\begin{pmatrix}
+\pdiff{}{x}\left(\pdiff{}{x}+\pdiff{}{y}+\pdiff{}{z}\right) \\
+\pdiff{}{y}\left(\pdiff{}{x}+\pdiff{}{y}+\pdiff{}{z}\right) \\
+\pdiff{}{z}\left(\pdiff{}{x}+\pdiff{}{y}+\pdiff{}{z}\right)
+\end{pmatrix}
+\end{split}
+\end{align}
+
+\begin{framed}
+\textbf{Remark:} There are only a few exact analytical solutions; many approximate analytical solutions (guided by intuition). Computational fluid dynamics can give us "exact" numerical solutions for approximations to the Navier-Stokes equation.
+\end{framed}
+
+We now have three coupled differential equations for five fields: $u_x\left(\vec{r},t\right)$, $u_y\left(\vec{r},t\right)$, $u_z\left(\vec{r},t\right)$, $p\left(\vec{r},t\right)$, and $\rho\left(\vec{r},t\right)$. This means we are missing two differential equations.
+
+
+\subsection*{The first missing equation}
+From thermodynamics we have an equation of state
+\begin{equation}
+g(p,\rho)=0
+\end{equation}
+
+Incompressible flow
+\begin{equation}
+\rho = \mathrm{constant}
+\end{equation}
+
+Law of ideal gases
+\begin{equation}
+pV=NkT
+\end{equation}
+
+From these we get
+\begin{align}
+\rho &= \frac{N}{V} = \frac{1}{kT}p\\
+\frac{p}{\rho} &= kT = \mathrm{constant}
+\end{align}
+This only holds if the temperature is constant.
+
+
+\subsection*{The second missing equation}
+Equation of continuity, local mass conservation.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.4\textwidth]{week2/pipe-flow}
+    \caption{}
+    \label{fig:pipe-flow}
+\end{figure}
+
+\begin{framed}
+\textbf{Example:} simple pipe flow. See \fref{fig:pipe-flow}.
+
+\begin{align}
+M_\mathrm{in} &= \rho S_1v_1\Delta t \\
+M_\mathrm{out} &= \rho S_2v_2\Delta t
+\end{align}
+
+mass conservation
+\begin{align}
+M_\mathrm{in} &= M_\mathrm{out}\\
+\leadsto
+v_1S_1 &= v_2S_2
+\end{align}
+This is Leonardo's law.
+\end{framed}
+
+Local mass conservation in a small volume element:
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.5\textwidth]{week2/mass-conservation}
+    \caption{}
+    \label{fig:mass-conservation}
+\end{figure}
+
+Mass flux through surface of volume $\Delta V = \Delta x \Delta y \Delta z$ in $x$-direction:
+\begin{align}
+\begin{split}
+\diff{M_x^S}{t} &= \rho \left(x+\frac{\Delta x}{2},y,z,t\right)u_x\left(x+\frac{\Delta x}{2},y,z,t\right)\Delta y \Delta z\\
+&\hspace{4.5mm} - \rho \left(x+\frac{\Delta x}{2},y,z\right)u_x\left(x+\frac{\Delta x}{2},y,z\right)\Delta y \Delta z
+\\
+&=\left(\rho(x,,z)+\pdiff{\rho(x,y,z)}{x}\frac{\Delta x}{2}\right)\left(u_x(x,y,z)+\pdiff{u_x(x,y,z)}{x}\frac{\Delta x}{2}\right) \Delta y \Delta z \\
+&\hspace{4.5mm} - \left[\rho(x,,z)+\pdiff{\rho(x,y,z)}{x}\left(-\frac{\Delta x}{2}\right)\right]\left[u_x(x,y,z)+\pdiff{u_x(x,y,z)}{x}\left(-\frac{\Delta x}{2}\right)\right] \Delta y \Delta z
+\\
+&=\pdiff{\rho(x,y,z)}{x}u_x(x,y,z)\Delta x \Delta y \Delta z  + \rho(x,y,z)\pdiff{u_x(x,y,z)}{x}\Delta x \Delta y \Delta z\\
+&=\pdiff{\left(\rho(x,y,z,t)u_x(x,y,z,t)\right)}{x}\Delta V
+\end{split}
+\end{align}
+
+Mass flux in $y$ and $z$-direction:
+\begin{align}
+\diff{M_y^S}{t} &= \pdiff{(\rho(x,y,z)u_y(x,y,z))}{y}\Delta V\\
+\diff{M_z^S}{t} &= \pdiff{(\rho(x,y,z)u_z(x,y,z))}{z}\Delta V
+\end{align}
+
+Sum of mass fluxes through volume in all directions:
+\begin{align}
+\diff{M^S}{t} &= \diff{M_x^S}{t} + \diff{M_y^S}{t} + \diff{M_z^S}{t} \\
+&= \pdiff{(\rho u_x)}{x}\Delta V + \pdiff{(\rho u_y)}{y}\Delta V + \pdiff{(\rho u_z)}{z}\Delta V\\
+&=
+\begin{pmatrix}
+\pdiff{}{x} \\ \pdiff{}{y} \\ \pdiff{}{z} \cdot
+\end{pmatrix}
+\begin{pmatrix}
+\rho u_x \\ \rho u_y \\ \rho u_z
+\end{pmatrix}
+\Delta V \\
+&= \vec{\nabla}\cdot\left(\rho(x,y,z)\vec{u}(x,y,z)\right)\Delta V
+\end{align}
+
+Increase of mass within fixed volume $\Delta V$:
+\begin{equation}
+\diff{M^V}{t} = \diff{(\rho(\vec{r},t)\Delta V)}{t} = \pdiff{\rho(\vec{r},t)}{t}\Delta V
+\end{equation}
+
+Local mass conservation
+\begin{equation}
+\diff{M^V}{t} = -\diff{M^S}{t}
+\end{equation}
+If mass within the volume increases, then less has to flow out of the surface than to flow in
+\begin{equation}
+\pdiff{\rho(\vec{r},t)}{t}+\vec{\nabla}\cdot\left(\rho(\vec{r},t)\vec{u}(\vec{r},t)\right)=0
+\end{equation}
+This is the equation of continuity.
+
+\begin{shaded}
+Include the generalized example on page 19 of hand written notes?
+\end{shaded}
+
+\subsection{Summary}
+Navier-Stokes equation:
+\begin{equation}\label{eq:navier-stokes}
+\rho\left(\pdiff{}{t}+\left(\vec{u}\cdot\vec{\nabla}\right)\right)\vec{u} = f_\mathrm{ext}-\vec{\nabla}p+\mu\left(\vec{\nabla}\cdot\vec{\nabla}\right)\vec{u} + \left(\mu_v + \frac{\mu}{3}\right)\vec{\nabla}\left(\vec{\nabla}\cdot\vec{u}\right)
+\end{equation}
+
+\begin{align}
+\vec{u} &= \vec{u}(\vec{r},t) = \vec{u}(x,y,z,t) \\
+\rho &= \rho(\vec{r},t)\\
+p &= p(\vec{r},t)
+\end{align}
+
+equation of continuity:
+\begin{equation}
+\pdiff{\rho}{t}+\vec{\nabla}\cdot(\rho\vec{u})=0
+\end{equation}
+
+Equation of state:
+\begin{equation}
+g(p,\rho;T)=0
+\end{equation}
+
+Heat equation:
+\begin{equation}
+\left(\pdiff{}{t}+\left(\vec{u}\cdot\vec{\nabla}\right)\right)T(\vec{r},r) = \kappa\left(\vec{\nabla}\cdot\vec{\nabla}\right)T(\vec{r},t),
+\end{equation}
+where $\kappa$ is the thermal diffusion.
+
+\newpage
+\section{Simplification of the Navier-Stokes equation (21-25)}
+
+\subsection{Simplification I: incompressible flows}
+Incompressibility means that the density of a fluid particle (moving along its pathline) remains constant.
+
+Incompressiblity is a very good approximation for most liquids, including water. In $\SI{1000}{m}$ depth the density of seawater is only $0.4\%$ larger that at the surface. For gas glows incompressiblity is also a good approximation as long as $|\vec{u}_\mathrm{gas}| \ll \mathrm{speed\ of\ sound}$. Compressibility becomes important when discussing e.g. sound waves.
+
+\begin{align}
+0 = \diff{\rho(\vec{r},t)}{t} &= \pdiff{\rho}{t}+\left(\vec{u}\cdot\vec{\nabla}\right)\rho\\
+&= -\vec{\nabla}\left(\rho\vec{u}\right)+\left(\vec{u}\cdot\vec{\nabla}\right)\rho \\
+&= -\left(\vec{u}\cdot\vec{\nabla}\right)\rho - \rho\left(\vec{\nabla}\cdot\vec{u}\right) + \left(\vec{u}\cdot\vec{\nabla}\right)\rho\\
+&= -\rho\left(\vec{\nabla}\cdot\vec{u}\right)\\
+&= -\rho\, \mathrm{div}\, \vec{u}
+\end{align}
+In the first line we used the material derivative. In the step to the second line we used continuity equation.
+
+For incompressibility the divergence must be zero:
+\begin{equation}
+\vec{\nabla}\cdot\vec{u} = 0
+\end{equation}
+
+Navier-Stokes equation for incompressible flows:
+\begin{equation}
+\rho\left(\pdiff{\vec{u}}{t}+\left(\vec{u}\cdot\vec{\nabla}\right)\right)\vec{u} = f_\mathrm{ext}-\vec{\nabla}p+\mu\left(\vec{\nabla}\cdot\vec{\nabla}\right)\vec{u}
+\end{equation}
+\begin{framed}
+Remark: It looks simple, but these nonlinear differential equations remain a formidable challenge to engineers, physicists and mathematicians.
+\end{framed}
+Equation of state in the simplest form with constant density:
+\begin{equation}
+p=p(\rho) \Rightarrow \rho=\rho_0=\mathrm{constant}
+\end{equation}
+
+
+\subsection{Simplification II: incompressible, ideal, stationary, irrotational flows}
+We use the incompressibility result from earlier:
+\begin{equation}
+\vec{\nabla}\cdot\vec{u} = 0
+\end{equation}
+
+Ideal means no friction. To eliminate friction forces we set $\mu=0$.
+
+Euler equation:
+\begin{equation}
+\rho_0\left(\pdiff{\vec{u}}{t}+\left(\vec{u}\cdot\vec{\nabla}\right)\vec{u}\right) = f_\mathrm{ext}-\vec{\nabla}p
+\end{equation}
+
+stationary:
+\begin{align}
+\vec{u}(\vec{r},t) &= \vec{u}(\vec{r})\\
+\leadsto
+\pdiff{\vec{u}}{t} &= 0
+\end{align}
+\begin{equation}
+\rho_0\left(\vec{u}\cdot\vec{\nabla}\right)\vec{u} = f_\mathrm{ext}-\vec{\nabla}p
+\end{equation}
+
+no external forces: $f_\mathrm{ext}=0$
+\begin{equation}
+\rho_0\left(\vec{u}\cdot\vec{\nabla}\right)\vec{u} = -\vec{\nabla}p
+\end{equation}
+
+Assuming irrotational flow: $\vec{\nabla}\times\vec{u}=0$.
+\begin{equation}
+\vec{\nabla}\underbrace{\left(\frac{\rho_0}{2}\vec{u}^2+p\right)}_\mathrm{constant}=0
+\end{equation}
+
+Bernoulli's equation
+\begin{align}
+\frac{\rho_0}{2}\vec{u}^2+p &= \mathrm{constant}\\
+\vec{\nabla}\cdot\vec{u} &= 0\\
+\vec{\nabla}\times\vec{u} &= 0
+\end{align}
+Given all the assumptions, this set of equations is equivalent to the Navier-Stokes equation.
+
+\begin{shaded}
+I skipped page 23a and 23b. Should these be included here?
+\end{shaded}
+
+
+\subsection{Derivation of Bernoulli's equation}
+The equation
+\begin{equation}
+\vec{\nabla}\left(\frac{\rho_0}{2}\vec{v}^2+p\right) = \rho_0\vec{v}\times\left(\vec{\nabla}\times\vec{v}\right)
+\end{equation}
+is (scalar) multiplied with $d\vec{s}\parallel\vec{v}$, where $d\vec{s}$ describes an increment of a specific streamline (here pathline since $\vec{v}(\vec{r},t) = \vec{v}(\vec{r})$).
+\begin{equation}
+d\vec{s}\cdot\left[\vec{v}\times\left(\vec{\nabla}\times\vec{v}\right)\right]=0
+\end{equation}
+Since $d\vec{s}\parallel\vec{v}$ it must be that $d\vec{s}\perp\vec{v}\times\left(\vec{\nabla}\times\vec{v}\right)$.
+
+Subsequent path-integration along a streamline yields
+\begin{align}
+0 \require ...
+\end{align}
+
+
+\subsection{Example: Why does an airplane fly?}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.6\textwidth]{week2/airplane}
+    \caption{}
+    \label{fig:airplane}
+\end{figure}
+The wind speed difference between the top and bottom of the wing creates a pressure difference:
+\begin{align}
+u_\mathrm{top} &> u_\mathrm{bottom}\\
+\leadsto
+p_\mathrm{top} &< p_\mathrm{bottom}.
+\end{align}
+This results in a lifting force.
