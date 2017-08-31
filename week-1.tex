@@ -1,6 +1,8 @@
-\section{Warm-up: poor man's approach to Fluid Dynamics (1-7)}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\section{Warm-up: poor man's approach to Fluid Dynamics}
 \begin{quote}
-    Even this simple approach is capable of quite a few important applications!
+    This simple approach is capable of quite a few important applications!
 \end{quote}
 
 \subsection{Leonardo's Law: mass conservation}
@@ -10,8 +12,8 @@
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=.6\textwidth]{week1/leonardos-law}
-    \caption{}
+    \includegraphics[width=.7\textwidth]{week1/leonardos-law}
+    \caption{An illustration of mass conservation.}
     \label{fig:leonardos-law}
 \end{figure}
 
@@ -33,8 +35,8 @@ Here \eqref{eq:leonardos-law} is known as Leonardo's Law. It has the following p
 \subsubsection{Example 1: why is it always windy on Aarhus Ø?}
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=.5\textwidth]{week1/aarhus-oe}
-    \caption{}
+    \includegraphics[width=.6\textwidth]{week1/aarhus-oe}
+    \caption{The gap between adjacent apartment buildings seen from the side.}
     \label{fig:aarhus-oe}
 \end{figure}
 
@@ -53,7 +55,7 @@ Equating \eqref{eq:aarhus-1} and \eqref{eq:aarhus-2} gives
     u_2 = \frac{A_1}{A_2} u_1
     \label{}
 \end{equation}
-Plugging in numbers:
+Plugging in "realistic" numbers:
 \begin{equation}
     u_2 = \frac{\SI{65}{m}\cdot\mathrm{h}}{\SI{15}{m}\cdot\mathrm{h}} \cdot \SI{10}{m/s} = \SI{43.3}{m/s}
     \label{}
@@ -69,7 +71,7 @@ Plugging in numbers:
 \begin{figure}[h!]
     \centering
     \includegraphics[width=.2\textwidth]{week1/falling-liquid}
-    \caption{}
+    \caption{A stream of falling liquid.}
     \label{fig:falling-liquid}
 \end{figure}
 
@@ -99,6 +101,12 @@ Remark: The narrowing of a falling stream of liquid holds only for the upper par
 
 
 \subsubsection{Example 3: wave energy converter}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=.7\textwidth]{week1/wave-energy}
+    \caption{Schematic of a wave energy converter.}
+    \label{fig:wave-energy}
+\end{figure}
 The ocean waves induce an oscillating water surface height, which induces an oscillating air stream. A turbine is placed at the nozzle (with cross-section $A_1\ll A_0$) and extracts power from the moving air stream.
 
 Oscillating height:
@@ -130,8 +138,8 @@ where $f$ is the frequency, $T$ is the oscillating period and $\omega$ is the an
 \subsubsection{Example 4: wake flow behind a wind turbine and wind farm optimization}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=.7\textwidth]{week1/wake-flow}
-    \caption{}
+    \includegraphics[width=.75\textwidth]{week1/wake-flow}
+    \caption{The expanding wake behind a turbine.}
     \label{fig:wake-flow}
 \end{figure}
 Far-field modeling of a wake flow behind a wind turbine. We use the linear wake expansion:
@@ -146,14 +154,15 @@ We use the equation of continuity (Leonardo's law):
 \end{equation}
 In words this equation states that the in-flow through the left side of the cylinder is equal to the out-flow through the right side of the cylinder. Rearranging this equation we can get an expression for the wind speed of the wake behind the turbine:
 \begin{align}
-    v(x) &= \frac{R^2}{r^2}v(0_+)=+\frac{r^2-R^2}{r^2}u = u-\frac{R^2}{r^2}\left(u-v(0_+)\right)\\
-    &= u \left\{1-\frac{1-\frac{v(0_+)}{u}}{\left(1+\frac{kx}{R}\right)^2}\right\}
+    v(x) &= \frac{R^2}{r^2}v(0_+)+\frac{r^2-R^2}{r^2}u = u-\frac{R^2}{r^2}\left(u-v(0_+)\right)\\
+    &= u \left\{1-\frac{1-\frac{v(0_+)}{u}}{\left(1+\frac{kx}{R}\right)^2}\right\}.
     \label{eq:v-x}
 \end{align}
-where we used the fact that the axial induction factor is given as
+The ratio
 \begin{equation}
-    q = \frac{v(0_+)}{u}.
+    q = \frac{v(0_+)}{u}
 \end{equation}
+is called the axial induction factor.
 
 Consistency checks:
 \begin{align}
@@ -165,8 +174,8 @@ Consistency checks:
 \subsubsection*{Betz theory: power produced by a wind turbine}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=.4\textwidth]{week1/near-field}
-    \caption{}
+    \includegraphics[width=.5\textwidth]{week1/near-field}
+    \caption{The velocity deficit caused by the rotor disc.}
     \label{fig:betz}
 \end{figure}
 
@@ -179,22 +188,21 @@ A wind turbine extracts kinetic energy out of the wind flow:
 
 \begin{align}
     P_\mathrm{turbine} &= \frac{d E_\mathrm{extracted}}{dt}\\
-    &= \frac{\rho\pi R^2 u^3}{2} \left\{\frac{\left(1+\frac{v(0_+)}{u}\right)}{2}\left(1-\left(\frac{v(0_+)}{u}\right)^2\right)\right\}
+    &= \frac{\rho\pi R^2 u^3}{2} \left\{\frac{\left(1+q\right)}{2}\left(1-q^2\right)\right\}
     \label{}
 \end{align}
-The term in front is the kinetic energy contained in the upstream wind (volume). The term within the curly braces is the efficiency of the wind turbine also called the power coefficient:
+The term in front is the kinetic energy contained in the upstream wind (volume). The term within the curly brackets is the efficiency of the wind turbine also called the power coefficient:
 \begin{equation}
-    C_p = C_p\left(\frac{v(0_+)}{u}\right) \equiv q,
+    C_p = C_p(q) = \frac{\left(1+q\right)}{2}\left(1-q^2\right).
     \label{}
 \end{equation}
-where $q$ is the axial induction factor.
 
 The maximum efficiency of a turbine can be calculated by requiring
 \begin{equation}
 \diff{C_p(q)}{q} = \diff{}{q} \left(\half (1+q)(1-q^2)\right) \require 0
 \label{eq:power-coefficient}
 \end{equation}
-Solving the requirement gives the optimal $q$ value
+This gives the optimal $q$ value
 \begin{align}
 q &= \frac{1}{3}\\
 \leadsto
@@ -211,8 +219,8 @@ This is known as the Betz limit. Real turbines have about $C_p \approx 0.40-0.50
 \subsubsection{Power optimization of a two-turbine wind farm}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=.5\textwidth]{week1/two-turbines}
-    \caption{}
+    \includegraphics[width=.6\textwidth]{week1/two-turbines}
+    \caption{A very simple wind farm consisting of two turbines. The wind is approaching from the left.}
     \label{fig:two-turbines}
 \end{figure}
 
@@ -235,7 +243,7 @@ Similar to before we find the optimal value of $q_1$ by the requirement
 \begin{equation}
 \diff{P_{1+2}}{q_1} \require 0.
 \end{equation}
-We also fix the values
+We fix the values
 \begin{align*}
 k &= 0.04\\
 \frac{x}{R} &= 8.
