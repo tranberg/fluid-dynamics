@@ -8,7 +8,7 @@ full:
 	pdflatex main.tex
 
 clean:
-	rm *.log *.out *.blg *.bbl *.aux *.toc *.spl *.bak
+	rm -f *.log *.out *.blg *.bbl *.aux *.toc *.spl *.bak
 
 view:
 	okular main.pdf &
