@@ -94,7 +94,7 @@ The surrounding fluid particles push the "sandwiched" fluid particle around; the
 \end{equation}
 with the gravitational constant defined as
 \begin{equation}
-\vec{g} = \begin{pmatrix}
+\vec{g} = -\begin{pmatrix}
 0\\0\\\SI{9.81}{\frac{m}{s}}
 \end{pmatrix} = -g\vec{e}_z.
 \end{equation}
@@ -207,9 +207,9 @@ f_x^\mathrm{ext} \\ f_y^\mathrm{ext} \\ f_z^\mathrm{ext}
 &\hspace{4.5mm}+
 \left(\mu_v + \frac{\mu}{3}\right)
 \begin{pmatrix}
-\pdiff{}{x}\left(u_x+u_y+u_z\right) \\
-\pdiff{}{y}\left(u_x+u_y+u_z\right) \\
-\pdiff{}{z}\left(u_x+u_y+u_z\right)
+\pdiff{}{x}\left(\pdiff{u_x}{x}+\pdiff{u_y}{y}+\pdiff{u_z}{z}\right) \\
+\pdiff{}{y}\left(\pdiff{u_x}{x}+\pdiff{u_y}{y}+\pdiff{u_z}{z}\right) \\
+\pdiff{}{z}\left(\pdiff{u_x}{x}+\pdiff{u_y}{y}+\pdiff{u_z}{z}\right)
 \end{pmatrix}
 \end{split}
 \end{align}
