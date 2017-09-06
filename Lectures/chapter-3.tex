@@ -78,39 +78,39 @@ Given all the assumptions, this set of equations is equivalent to the Navier-Sto
 \begin{framed}
 \textbf{Proof of}
 \begin{equation}
-\left(\vec{v}\cdot\vec{\nabla}\right)\vec{v}=\frac{1}{2}\vec{\nabla}\left(\vec{v}^2\right)-\vec{v}\times\left(\vec{\nabla}\times\vec{v}\right).
+\left(\vec{u}\cdot\vec{\nabla}\right)\vec{u}=\frac{1}{2}\vec{\nabla}\left(\vec{u}^2\right)-\vec{u}\times\left(\vec{\nabla}\times\vec{u}\right).
 \end{equation}
 First we look at the x-component of the left-hand side:
 \begin{equation}
-\left[\left(\vec{v}\cdot\vec{\nabla}\right)\vec{v}\right]_x = \left(v_x\partial_x+v_y\partial_y+v_z\partial_z\right)v_x
+\left[\left(\vec{u}\cdot\vec{\nabla}\right)\vec{u}\right]_x = \left(u_x\partial_x+u_y\partial_y+u_z\partial_z\right)u_x
 \end{equation}
 Now we look at the rightmost term on the right-hand side:
 \begin{equation}
-\vec{\nabla}\times\vec{v} = \begin{vmatrix}
+\vec{\nabla}\times\vec{u} = \begin{vmatrix}
 \vec{e}_x & \vec{e}_y & \vec{e}_z \\
 \partial_x & \partial_y & \partial_z \\
-v_x & v_y & v_z
+u_x & u_y & u_z
 \end{vmatrix} =
-\left(\partial_yv_z-\partial_zv_y\right)\vec{e}_x +
-\left(\partial_zv_x-\partial_xv_z\right)\vec{e}_y +
-\left(\partial_xv_y-\partial_yv_x\right)\vec{e}_z
+\left(\partial_yu_z-\partial_zu_y\right)\vec{e}_x +
+\left(\partial_zu_x-\partial_xu_z\right)\vec{e}_y +
+\left(\partial_xu_y-\partial_yu_x\right)\vec{e}_z
 \end{equation}
 Now we can show that the x-component of the right-hand side is equal to the x-component of the left-hand side:
 \begin{align}
 \begin{split}
-\left[\frac{1}{2}\vec{\nabla}\left(\vec{v}^2\right)-\vec{v}\times\left(\vec{\nabla}\times\vec{v}\right)\right]_x &= \frac{1}{2}\partial_x\left(v_x^2+v_y^2+v_z^2\right)\\
-&\hspace{3mm}- \begin{vmatrix}
+\left[\frac{1}{2}\vec{\nabla}\left(\vec{u}^2\right)-\vec{u}\times\left(\vec{\nabla}\times\vec{u}\right)\right]_x &= \frac{1}{2}\partial_x\left(u_x^2+u_y^2+u_z^2\right)\\
+&\hspace{4mm}- \begin{vmatrix}
 \vec{e}_x & \vec{e}_y & \vec{e}_z \\
-v_x & v_y & v_z \\
-\partial_yv_z-\partial_zv_y & \partial_zv_x-\partial_xv_z & \partial_xv_y-\partial_yv_xv_x\left(\partial_xv_x\right)
+u_x & u_y & u_z \\
+\partial_yu_z-\partial_zu_y & \partial_zu_x-\partial_xu_z & \partial_xu_y-\partial_yu_x
 \end{vmatrix}_x
 \end{split}\\
 \begin{split}
-&= v_x\left(\partial_xv_x\right) + v_y\left(\partial_xv_y\right) + v_z\left(\partial_xv_z\right)\\
-&\hspace{3mm}- v_y\left(\partial_xv_y-\partial_yv_x\right) + v_z\left(\partial_zv_x-\partial_xv_z\right)
+&= u_x\left(\partial_xu_x\right) + u_y\left(\partial_xu_y\right) + u_z\left(\partial_xu_z\right)\\
+&\hspace{4mm}- u_y\left(\partial_xu_y-\partial_yu_x\right) + u_z\left(\partial_zu_x-\partial_xu_z\right)
 \end{split}\\
-&= v_x\left(\partial_xv_x\right)+v_y\left(\partial_yv_y\right)+v_z\left(\partial_zv_z\right)\\
-&= \left[\left(\vec{v}\cdot\vec{\nabla}\right)\vec{v}\right]_x
+&= u_x\left(\partial_xu_x\right)+u_y\left(\partial_yu_y\right)+u_z\left(\partial_zu_z\right)\\
+&= \left[\left(\vec{u}\cdot\vec{\nabla}\right)\vec{u}\right]_x
 \end{align}
 \end{framed}
 
@@ -118,31 +118,31 @@ v_x & v_y & v_z \\
 \subsection{Derivation of Bernoulli's equation}
 The equation
 \begin{equation}
-\vec{\nabla}\left(\frac{\rho_0}{2}\vec{v}^2+p\right) = \rho_0\vec{v}\times\left(\vec{\nabla}\times\vec{v}\right)
+\vec{\nabla}\left(\frac{\rho_0}{2}\vec{u}^2+p\right) = \rho_0\vec{u}\times\left(\vec{\nabla}\times\vec{u}\right)
 \end{equation}
-is (scalar) multiplied with $d\vec{s}\parallel\vec{v}$, where $d\vec{s}$ describes an increment of a specific streamline (here pathline since $\vec{v}(\vec{r},t) = \vec{v}(\vec{r})$).
+is (scalar) multiplied with $d\vec{s}\parallel\vec{u}$, where $d\vec{s}$ describes an increment of a specific streamline (here pathline since $\vec{u}(\vec{r},t) = \vec{u}(\vec{r})$).
 \begin{equation}
-d\vec{s}\cdot\left[\vec{v}\times\left(\vec{\nabla}\times\vec{v}\right)\right]=0
+d\vec{s}\cdot\left[\vec{u}\times\left(\vec{\nabla}\times\vec{u}\right)\right]=0
 \end{equation}
-Since $d\vec{s}\parallel\vec{v}$ it must be that $d\vec{s}\perp\vec{v}\times\left(\vec{\nabla}\times\vec{v}\right)$.
+Since $d\vec{s}\parallel\vec{u}$ it must be that $d\vec{s}\perp\vec{u}\times\left(\vec{\nabla}\times\vec{u}\right)$.
 
 Subsequent path-integration along a streamline yields
 \begin{align}
-0 &\require \int_\text{streamline}\vec{\nabla}\underbrace{\left(\frac{\rho_0}{2}\vec{v}^2+p\right)}_W\cdot d\vec{s}\\
+0 &\require \int_\text{streamline}\vec{\nabla}\underbrace{\left(\frac{\rho_0}{2}\vec{u}^2+p\right)}_W\cdot d\vec{s}\\
 &= \int_\text{streamline} \begin{pmatrix}
 \pdiff{W}{x}\\
 \pdiff{W}{y}\\
 \pdiff{W}{y}
-\end{pmatrix}
+\end{pmatrix}\cdot
 \begin{pmatrix}
 dx\\dy\\dz
 \end{pmatrix}\\
 &= \int_\text{streamline} \left(\pdiff{W}{x}dx+\pdiff{W}{y}dy+\pdiff{W}{z}dz\right)\\
-&= \int_\text{streamline}dW = \int_\text{streamline} d\left(\frac{\rho_0}{2}\vec{v}^2+p\right)\\
+&= \int_\text{streamline}dW = \int_\text{streamline} d\left(\frac{\rho_0}{2}\vec{u}^2+p\right)\\
 &\Downarrow\notag\\
-\frac{\rho_0}{2}\vec{v}^2+p&=\text{constant}\qquad\text{(along a streamline)}
+\frac{\rho_0}{2}\vec{u}^2+p&=\text{constant}\qquad\text{(along a streamline)}
 \end{align}
-For another streamline the constant might in principle be different. For examples like the velocity in the far-field regime is everywhere the same. The same holds true for the pressure. Then the "Bernoulli constant" has to be everywhere (far and nea-field) the same. From here we then also conclude that $\vec{\nabla}\times\vec{v}=0$ everywhere.
+For another streamline the constant might in principle be different. Often the velocity in the far-field regime (away from the obstacle) is everywhere the same. The same holds true for the pressure. Then the "Bernoulli constant" has to be everywhere (far and near-field) the same. From here we then also conclude that $\vec{\nabla}\times\vec{u}=0$ everywhere.
 
 \subsection{Example: Why does an airplane fly?}
 \begin{figure}[!h]
@@ -151,7 +151,7 @@ For another streamline the constant might in principle be different. For example
     \caption{The profile of the wing of an airplane.}
     \label{fig:airplane}
 \end{figure}
-The wind speed difference between the top and bottom of the wing creates a pressure difference:
+According to the Bernoulli's equation, the wind speed difference between the top and bottom of the wing creates a pressure difference:
 \begin{align}
 u_\mathrm{top} &> u_\mathrm{bottom}\\
 \leadsto
