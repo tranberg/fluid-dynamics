@@ -1,446 +1,300 @@
-\section{Forces on a 2-dimensional body (45-63)}
+\section{Ideal flow: planar 2-dimensional potential flow around cylinder (26-36)}
 
 \begin{framed}
-Ideal potential flows:
-\begin{equation}
-\vec{\nabla}\cdot\vec{v}=0=\vec{\nabla}\times\vec{v}\Rightarrow\vec{\nabla}\cdot\vec{\nabla}\phi = \left(\ppdiff{}{x}+\ppdiff{}{y}\right)\phi=0
-\end{equation}
-Where is the Euler equation? Do we need it?
+For further details see section 4.3, 4.9 and 7.1-3 in the KCD book
 \end{framed}
 
-Euler equation:
-\begin{equation}
-\rho \left(\pdiff{\vec{v}}{t}+\left(\vec{v}\cdot\vec{\nabla}\right)\vec{v}\right) = \rho \vec{f} - \vec{\nabla}p + \mu\left(\vec{\nabla}\cdot\vec{\nabla}\right)\vec{v}
-\end{equation}
-
-Reduce to Bernoulli equation:
-\begin{equation}
-\vec{\nabla}\left(\frac{\rho}{2}\vec{v}^2+p\right)=0
-\end{equation}
-
-With the Bernoulli equation (leftover from the Euler equation) we can calculate the force on the "obstacle" (\fref{fig:2dim-body}) from the surrounding flow:
-
-\begin{align}
-\vec{F} &= \int_{S(v)}(-p(\vec{r}))d\vec{A} = -\int_{S(v)}\left(p_0-\frac{\rho}{2}\vec{v}^2(\vec{r})\right)d\vec{A} \\
-&= \frac{\rho}{2}\int_{S(v)}\vec{v}^2(\vec{r})d\vec{A}\\
-&= L\vec{e}_y +\underbrace{D\vec{e}_x}_{=0}
-\end{align}
-where $\vec{L}$ is the lift force and $\vec{D}$ is the drag force. The last term equals zero because there is no friction.
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=.5\textwidth]{week4/2dim-body}\\
-    \caption{}
-    \label{fig:2dim-body}
-\end{figure}
-
 \begin{shaded}
-I skipped page 45a and the solution of an old exam problem: pages 46, 46a-46d.
+I skipped the summary of NS equation on page 26 of hand written notes. Maybe there should be an introductory paragraph here with references to equations from previous sections.
 \end{shaded}
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=.4\textwidth]{week4/generic-lift2}\\
+    \includegraphics[width=.5\textwidth]{week3/planar-flow}
     \caption{}
-    \label{fig:generic-lift2}
+    \label{fig:planar-flow}
 \end{figure}
 
-Lift coefficient
+Questions to \fref{fig:planar-flow}: 1) $\vec{u} = \vec{u}(x,y,z)$?, 2) pathlines (streamlines)?
+
 \begin{equation}
-C_L = \frac{L}{\frac{\rho}{2}v_\infty^2 b c}
+\vec{\nabla}\times\vec{u} = 0 \Rightarrow \vec{u}(\vec{r}) = \vec{\nabla}\phi(\vec{r})
 \end{equation}
-Drag coefficient:
+where $\phi(\vec{r})$ is a velocity potential.
+
+\begin{align}
+\vec{\nabla}\times\vec{u} &= 0\\
+\leadsto
+\vec{\nabla}\cdot\vec{\nabla}\phi(\vec{r}) &= \left(\ppdiff{}{x}+\ppdiff{}{y}+\ppdiff{}{z}\right)\phi(x,y)\\
+&= \left(\ppdiff{}{x}+\ppdiff{}{y}\right)\phi(x,y) = 0
+\end{align}
+This second order differential equation is the Laplace equation.
+
+Question: How does the cylinder (obstacle) enter in solving the Laplace equation?
+
+Two boundary conditions.
+
+1:
+\begin{align}
+\vec{u}(|\vec{r}|\rightarrow\infty) &= \vec{u}_\infty = u_\infty\vec{e}_x \\
+\leadsto
+\phi(|\vec{r}|\rightarrow\infty) &= u_\infty x + \mathrm{constant}
+\end{align}
+
+2:
 \begin{equation}
-C_D = \frac{D}{\frac{\rho}{2}v_\infty^2 b c}
+0=u_\mathrm{surface}\cdot \vec{n} = \vec{\nabla}\phi\biggm\vert_\mathrm{surface}\cdot\vec{n}
 \end{equation}
+
+The fluid particle does not flow into the surface; only tangential component.
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=.5\textwidth]{week4/generic-lift}\\
+    \includegraphics[width=.5\textwidth]{week3/planar-flow2}
     \caption{}
-    \label{fig:generic-lift}
+    \label{fig:planar-flow2}
 \end{figure}
 
+For the flow around the cylinder the solution of the Laplace equation with the two boundary conditions "falls from the sky" (for the moment):
+\begin{equation}
+\phi(x,y)=u_\infty\times\left(1+\frac{R^2}{x^2+y^2}\right)
+\end{equation}
 
-\subsection{Turbine blade}
-Explain how the lift force pulls the rotor blade of a wind turbine forward. See \fref{fig:turbine-blade}.
+\begin{shaded}
+I skipped the last part of page 28 here
+\end{shaded}
+
+Velocity field:
+\begin{equation}
+\vec{u} = \begin{pmatrix}
+u_x\\u_y
+\end{pmatrix}  = 
+\vec{\nabla}\phi(x,y) = \begin{pmatrix}
+\pdiff{\phi}{x} \\
+\pdiff{\phi}{y}
+\end{pmatrix}
+\end{equation}
+
+\begin{align}
+\begin{split}\label{eq:uxuy1}
+u_x &= u_\infty\left(1+\frac{R^2(y^2-x^2)}{(x^2+y^2)^2}\right)\\
+u_y &= -u_\infty \frac{2xyR^2}{(x^2+y^2)^2}
+\end{split}
+\end{align}
+
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=.6\textwidth]{week4/turbine-blade}\\
+    \includegraphics[width=.7\textwidth]{week3/velocity-field}
     \caption{}
-    \label{fig:turbine-blade}
+    \label{fig:velocity-field}
 \end{figure}
 
+examples:
+\begin{align}
+\vec{u}\biggm\vert_{x\rightarrow\pm\infty} &= u_\infty\vec{e}_x = \vec{u}\biggm\vert_{y\rightarrow\pm\infty}\\
+\vec{u}\biggm\vert_{\small\vec{r}=\begin{pmatrix} 0 \\ R
+\end{pmatrix}} &= 2u_\infty\vec{e}_x \\
+\vec{u}\biggm\vert_{\small\vec{r}=\begin{pmatrix} R \\ 0
+\end{pmatrix}} &= 0 = \vec{u}\biggm\vert_{\small\vec{r}=\begin{pmatrix} -R \\ 0
+\end{pmatrix}}
+\end{align}
 
-\subsection[Sailing against the wind]{Sailing against the wind (KCD 14.9)}
-People have sailed without the aid of an engine for thousands of years and have known
-how to reach an upwind destination. Actually, it is not possible to sail exactly against the
-wind, but it is possible to sail at z 40e45$^\circ$ to the wind. Figure 14.29 shows how this is
-made possible by the aerodynamic lift on the sail, which is a piece of stretched and stiffened
-cloth. The wind speed is U, and the sailing speed is V, so that the apparent wind speed rela-
-tive to the boat is Ur. If the sail is properly oriented, this gives rise to a lift force perpendicular
-to Ur and a drag force parallel to Ur. The resultant force F can be resolved into a driving
-component (thrust) along the motion of the boat and a lateral component. The driving
-component performs work in moving the boat; most of this work goes into overcoming
-the frictional drag and in generating the gravity waves that radiate outward from the hull.
-The lateral component does not cause much sideways drift because of the shape of the
-hull. It is clear that the thrust decreases as the angle q decreases and normally vanishes
-when $\theta$ is $\approx$ 40e45$^\circ$ . The energy for sailing comes from the wind field, which loses kinetic
-energy after passing the sail.
+
+\newpage
+\subsection{Pathline around a cylinder}
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=.6\textwidth]{week4/sailing-wind}\\
-    \caption{Principle of sailing against the wind. A small component of the sail’s lift pushes the boat forward at an angle q < 90$^\circ$ to the wind. Thus by traversing a zig-zag course at angles $\pm\theta$, a sailboat can reach an upwind destination. A sailboat’s keel may make a contribution to its upwind progress too.}
-    \label{fig:sailing-wind}
-\end{figure}
-
-\newpage
-\subsection{Reynolds number}
-Fluid around a cylinder can create several real flow patterns. See \fref{fig:reynolds-cylinder}.
-
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=\textwidth]{week4/reynolds-cylinder}\\
+    \includegraphics[width=.7\textwidth]{week3/pathline-cylinder}\\
+    \includegraphics[width=.7\textwidth]{week3/pathline-cylinder2}
     \caption{}
-    \label{fig:reynolds-cylinder}
+    \label{fig:pathline-cylinder}
 \end{figure}
 
-\textbf{Questions:}
-\begin{enumerate}
-\item why so many different flows?
-\item what causes and characterizes them?
-\end{enumerate}
-Certainly friction, i.e. viscosity, will have something to do with it.
+Top part of \fref{fig:pathline-cylinder} shows the Lagrangian picture: follows particle through all times. the bottom part shows the Eulerian picture, which is a snapshot of all fluid particles at one particular time.
+
+Connection between Lagrangian and Eulerian picture:
+\begin{equation}
+\diff{\vec{r}}{t} = \vec{u}(\vec{r},t)
+\end{equation}
+
+For stationary flows
+\begin{equation}
+\vec{u}(\vec{r},t)=\vec{u}(\vec{r}) \Rightarrow \mathrm{pathline} = \mathrm{streamline}
+\end{equation}
+
+Given the snapshots $\vec{u}(\vec{r},t)$, we can calculate the pathlines.
+
+Given the pathlines, we can construct the snapshots.
+
+This sounds like the "chicken and egg" problem.
+
+\bigskip
+Question: How to calculate the streamlines?
+
+First approach:
+Definition of streamline:
+\begin{equation}
+d\vec{s}\parallel\vec{u},
+\end{equation}
+where $ds$ is a line element of a streamline.
+\begin{align}
+0=d\vec{s}\times\vec{u} &=
+\begin{vmatrix}
+0 & 0 & \vec{e}_z \\
+dx & dy & 0 \\
+u_x & u_y & 0
+\end{vmatrix} =
+(u_ydx-u_xdy)\vec{e}_z\\
+\leadsto
+\diff{y}{x} &= \frac{u_y}{u_x} = -\frac{2xyR^2}{(x^2+y^2)^2+R^2(y^2-x^2)}
+\end{align}
+
+Second approach: introduce the streamfunction $\psi(x,y)$.
+
+Incompressibility gives us:
+\begin{equation}
+ \vec{\nabla}\cdot\vec{u} = \pdiff{u_x}{x}+\pdiff{u_y}{y}=0
+\end{equation}
+which leads to
+\begin{equation}
+ u_x = \pdiff{\psi}{y}, \quad u_y = -\pdiff{\psi}{x} \label{eq:uxuy2}
+\end{equation}
 
 \begin{align}
-0 &= \rho_0 \left[\pdiff{\vec{v}}{t}+\left(\vec{v}\cdot\vec{\nabla}\right)\vec{v}\right] + \vec{\nabla}p - \mu\Delta \vec{v} \\
-&= \rho_0\left[\frac{V}{T}\pdiff{\vec{v}'}{t'}+\frac{V^2}{L}\left(\vec{v}'\cdot\vec{\nabla}'\right)\vec{v}'\right] + \frac{\rho_0 V^2}{L}\vec{\nabla}'p'-\mu\frac{V}{L^2}\Delta'\vec{v}' \\
-&= \rho_0\frac{V^2}{L} \left\lbrace \pdiff{\vec{v}'}{t'}+\left(\vec{v}'\cdot\vec{\nabla}'\right)\vec{v}'+\vec{\nabla}'p'-\frac{\mu}{\rho_0 LV} \Delta'\vec{v}' \right\rbrace
+d\vec{s}\times\vec{u} &= (u_ydx-u_xdy)\vec{e}_x \\
+&= \left(-\pdiff{\psi}{x}dx-\pdiff{\psi}{y}dy\right)\vec{e}_z\\
+&= -d\psi \vec{e}_z \require 0
 \end{align}
-where $L$ is the characteristic length, $V$ is the characteristic velocity, $T=L/V$ is the characteristic time, and $P=\rho_0V^2$ the characteristic pressure.
+The streamfunction is constant along a streamline. This represents an \emph{isopotentialline} of the streamfunction and describes a streamline.
 
-Reynolds number:
-\begin{equation}
-Re = \frac{\rho_0 L V}{\mu}
-\end{equation}
+From the defining functions of the streamfunction in \eqref{eq:uxuy2} and the $u_x$, $u_y$ solution for the ideal flow around a cylinder in \eqref{eq:uxuy1}, we can determine $\psi$ by partial integration
+\begin{align}
+\psi(x,y) &= v_\infty y\left(1-\frac{R"2}{x^2+y^2}\right)\\
+&= v_\infty \sin\psi\left(r-\frac{R^2}{r}\right)
+\end{align}
 
 \begin{framed}
-\textbf{Remark:} law of similarity
-
-If two flows have the same geometry (object) and the same Reynolds number, but a different absolute scale it means that the two flows are similar (identical, except for a scale transformation). Applications of this is wind tunnel experiments of air wings, wind turbine blades, cars, etc.
-\end{framed}
-
-The Reynolds number
+\textbf{Remark:} relationship between velocity potential and streamfunction $\phi=\mathrm{constant}$, $\psi=\mathrm{constant}$ represent and orthogonal set of curves, because
 \begin{equation}
-Re = \frac{\rho_0 L V}{\mu} = \frac{\rho_0 V^2/L}{\mu V/L},
-\end{equation}
-is the inertia force density divided by the friction force density.
-
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=\textwidth]{week4/reynolds-numbers}\\
-    \caption{This should be presented in text in a better way.}
-    \label{fig:reynolds-numbers}
-\end{figure}
-
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=\textwidth]{week4/schematic-flows}\\
-    \caption{}
-    \label{fig:schematic-flows}
-\end{figure}
-
-
-\newpage
-\subsection{Viscous pipe flow}
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\textwidth]{week4/viscous-pipe-flow}\\
-    \caption{}
-    \label{fig:viscous-pipe-flow}
-\end{figure}
-
-Task: calculate velocity profile $v_z=v_z(r)$ for the viscous pipe flow.
-
-Navier-Stokes equation
-\begin{equation}
-\rho_0\underbrace{\pdiff{\vec{v}}{t}}_{=0}+\rho_0\underbrace{\left(\vec{v}\cdot\vec{\nabla}\right)}_{=0}\vec{v} = \underbrace{f_\mathrm{ext}}_{=0}-\vec{\nabla}p+\mu\left(\vec{\nabla}\cdot\vec{\nabla}\right)\vec{v}
-\end{equation}
-
-\begin{align}
-0 &= -\vec{\nabla}p + \mu\left(\ppdiff{}{x}+\ppdiff{}{y}\right)v_z\vec{e}_z\\
-\leadsto
-\left(\vec{\nabla}p\right)_x &= \left(\vec{\nabla}p\right)_y = 0 \\
-\leadsto
-p &= p(z)
-\end{align}
-
-\begin{align}
-\mu\Delta v_z(r) &= \frac{\mu}{r}\pdiff{}{r}\left(r\pdiff{v_z(r)}{r}\right) \\
-&= \pdiff{p(z)}{z} \require \mathrm{constant}
-\end{align}
-
-\begin{align}
-\pdiff{p(z)}{t}&=c \\
-\leadsto
-p(z) &= cz+d \\
-&= \frac{p(z=L)-p(z=0)}{L}z+p(z=0)\\
-&= -\frac{\Delta p}{L}z + p(z=0)
-\end{align}
-
-\begin{align}
-\frac{\mu}{r}\pdiff{}{r}\left(r\pdiff{v_z(r)}{r}\right) &= c = -\frac{\Delta p}{L} \\
-\leadsto
-r\pdiff{v_z(r)}{r} &= -\frac{\Delta p}{\mu L}\frac{r^2}{2} + D_1 \\
-\leadsto
-v_z(r) &= -\frac{\Delta p}{4\mu L}r^2 + D_1 \ln r + D_ 2 \\
-\leadsto
-v_z(r) &= \frac{\Delta p}{4\mu L}\left( R^2 - r^2\right)
-\end{align}
-
-Fluid mass per time passing through pipe cross-section:
-\begin{equation}
-\diff{M}{t} = \int_0^R\rho_0 v_z(r)2\pi r dr = \frac{\pi\rho_0 R^4\Delta p}{8\mu L}
-\end{equation}
-This is the Hagen-Poiseuille law.
-\begin{framed}
-\textbf{Remark:} this law allows to determine the viscosity:
-\begin{equation}
-\left\lbrace \underbrace{\rho_0,R,L}_\mathrm{known} \quad,\quad \underbrace{\Delta p,\diff{M}{t}}_\mathrm{measured} \right\rbrace \Rightarrow \mu
+\left(\vec{\nabla}\phi\right)\cdot\left(\vec{\nabla}\psi\right) = 
+\begin{pmatrix}
+\pdiff{\phi}{x} \\ \pdiff{\phi}{y}
+\end{pmatrix} \cdot
+\begin{pmatrix}
+\pdiff{\psi}{x} \\ \pdiff{\psi}{y}
+\end{pmatrix} = 
+\begin{pmatrix}
+u_x \\ u_y
+\end{pmatrix}\cdot
+\begin{pmatrix}
+-u_y \\ u_x
+\end{pmatrix} = 0
 \end{equation}
 \end{framed}
 
-\begin{framed}
-\textbf{Remark:} "Ohm's Law"
+\begin{shaded}
+I left out page 32a-32d here.
+\end{shaded}
+
+Two dimensional potential flow around an infinitely long cylinder 
+
+Because of cylinder symmetry we can transform from  to cylindrical coordinates
+\begin{align}
+x &= r\cos\phi\\
+y &= r\sin\phi
+\end{align}
+
+\begin{equation}
+\Phi(x,y) \rightarrow \Phi(r,\phi)
+\end{equation}
 
 \begin{align}
-\Delta p = \Delta u \ &,\quad \diff{M}{t} = I\\
+\Delta\Phi(x,y) &= \left(\ppdiff{}{x}+\ppdiff{}{y}\right)\Phi(x,y) \\
+&= \left[\frac{1}{r}\pdiff{}{r}\left(r\pdiff{}{r}\right) + \frac{1}{r^2}\pdiff{}{\phi}\right]\Phi(r,\phi)\\
+&= 0\\
 \leadsto
-I &= \frac{\pi\rho_0 R^4}{8L\mu}
+r\pdiff{}{r}\left(\pdiff{\Phi}{r}\right) &= -\ppdiff{\Phi}{\phi}
 \end{align}
 
-{\center
-\includegraphics[width=.4\textwidth]{week4/ohms-law}\\
-}
+\begin{shaded}
+I left out page 33a-33b here.
+\end{shaded}
 
+Ansatz: factorization
 \begin{equation}
-R = R_0\cdot f(Re)
+\Phi(r,\phi) = f(r)g(\phi)
 \end{equation}
-with
-\begin{equation}
-f(Re\rightarrow0)=1
-\end{equation}
-we conclude that turbulence increases pipe resistance. This is important for the operation of oil and gas pipelines.
-\end{framed}
 
-
-
-
-\newpage
-\subsection{Boundary layers}
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\textwidth]{week4/boundary-layers}\\
-    \caption{}
-    \label{fig:boundary-layers}
-\end{figure}
-
-Idea of boundary layer theory:
-\begin{enumerate}
-\item within the boundary layer the velocity increases from zero to the ideal flow velocity
-\item inside the boundary layer we use the Navier-Stokes equation (with friction)
-\item outside the boundary layer we use the Euler equation without friction i.e. ideal potential flow
-\item at the boundary surface we match the inside solution with the outside solution
-\end{enumerate}
-
-Derivation of the (laminar) boundary layer equations. Approximation to the Navier-Stokes equation inside the boundary layer. See \fref{fig:laminar-boundary}.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=.7\textwidth]{week4/laminar-boundary}\\
-    \caption{}
-    \label{fig:laminar-boundary}
-\end{figure}
-
-In the following we determine $\delta = \delta(x)$ (\fref{fig:laminar-boundary}) without solving the Navier-Stokes equation.
-
-Incompressible flow:
 \begin{align}
-\vec{\nabla}\cdot\vec{v} &= \pdiff{v_x}{x} + \pdiff{v_y}{y} = 0 \\
-&= \mathcal{O} \left(\frac{v_\infty}{L}\right) + \mathcal{O} \left(\frac{v_y}{\delta}\right) \\
+\frac{1}{f\cdot g} r\pdiff{}{r}\left(r\pdiff{(f(r)g(\phi))}{r}\right) &= -\frac{1}{f\cdot g}\ppdiff{(f(r)g(\phi))}{\phi} \\
 \leadsto
-\mathcal{O}(v_y) &= \delta\frac{v_\infty}{L} = \frac{\delta}{L}v_\infty
+\frac{1}{f(r)}r\pdiff{}{r}\left(r\pdiff{f(r)}{r}\right) &= -\frac{1}{g(\phi)}\ppdiff{g(\phi)}{\phi} \require m^2
 \end{align}
 
-Navier-Stokes equation (x-component):
-\begin{equation}
-v_x\pdiff{v_x}{x} + v_y\pdiff{v_x}{y} = -\frac{1}{\rho_0}\pdiff{p}{x} + \frac{\mu}{\rho_0}\ppdiff{v_x}{x} + \frac{\mu}{\rho_0}\ppdiff{v_x}{y}
-\end{equation}
-\begin{equation}
-\mathcal{O} \left(\frac{v_\infty^2}{L}\right) \require \mathcal{O} \left(\frac{\mu}{\rho_0}\frac{v_\infty}{\delta^2}\right)
-\end{equation}
+Left part depends only on $r$, middle part depends only on $\phi$, and right part is a constant, which does neither depend on $r$ nor $\phi$.
 
-\begin{equation}
-\left(\frac{\delta}{L}\right)^2 \sim \frac{\mu}{\rho_0 L v_\infty} = \frac{1}{Re}
-\end{equation}
-The larger the Reynolds number, the thinner the boundary layer. This holds for $Re \leq \SI{1e5}{}-\SI{1e6}{}$, above that the boundary layer becomes turbulent, and is no longer laminar. 
-
-\begin{equation}
-\delta(x) \sim \sqrt{\frac{\mu x}{\rho_0 v_\infty}}
-\end{equation}
-
-
-Navier-Stokes equation (y-component):
-\begin{equation}
-v_x\pdiff{v_y}{x} + v_y\pdiff{v_y}{y} = -\frac{1}{\rho_0}\pdiff{p}{y} + \frac{\mu}{\rho_0}\ppdiff{v_y}{x} + \frac{\mu}{\rho_0}\ppdiff{v_y}{y}
-\end{equation}
-
-\begin{equation}
-\pdiff{p}{y} = 0 \Rightarrow p = p(x)
-\end{equation}
-
-
-\textbf{Prandtl equations:} laminar boundary layer equations
 \begin{align}
-v_x\pdiff{v_x}{x}+v_y\pdiff{v_x}{y} &= -\frac{1}{\rho_0}\pdiff{p(x)}{x}+\frac{\mu}{\rho_0}\ppdiff{v_x}{y} \\
-\pdiff{v_x}{x}+\pdiff{v_y}{y}&=0
-\end{align}
-
-\textbf{Example:} Solution of Prandtl equations for laminar boundary flow around semi-infinite plate
-
-\begin{equation}
-p=p(x) \Rightarrow p(x)|_\mathrm{inside} = p(x)|_\mathrm{outside}
-\end{equation}
-
-Outside boundary layer:
-\begin{align}
-v_x|_\mathrm{outside} &= v_x = v_\infty = \mathrm{constant} \\
-v_y|_\mathrm{outside} &= 0
-\end{align}
-
-Bernoulli equation:
-\begin{align}
-p(x) + \frac{\rho_0}{2}v_x^2 &= \mathrm{constant}\\
+\ppdiff{g(\phi)}{\phi} &= -m^2g(\phi)\\
 \leadsto
-p(x) &= \mathrm{constant} \\
+g(\phi) = e^{im\phi} &=  \cos m\phi + i\sin m\phi
+\end{align}
+
+requirement:
+\begin{align}
+g(\phi) &= g(\phi+2\pi)\\
 \leadsto
-\pdiff{p(x)}{x} &= 0
-\end{align}
-
-Similarity ansatz:
-\begin{equation}
-v_x(x,y) = v_\infty g\left(\frac{y}{\delta(x)}\right)
-\end{equation}
-Except for a rescaling with $\delta(x)$ the velocity $v_x(x,y)$ looks like the same for all $x$.
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=.7\textwidth]{week4/boundary-ansatz}\\
-    \caption{}
-    \label{fig:boundary-ansatz}
-\end{figure}
-
-
-\noindent\makebox[\linewidth]{\rule{\textwidth}{0.5pt}}
-
-\textbf{Question:} does the similarity ansatz work?
-
-\begin{align}
-\pdiff{v_x}{x}+\pdiff{v_y}{y} &= 0 \\
+e^{im\phi} &= e^{im(\phi+2m)}\\
 \leadsto
-v_x = \pdiff{\psi}{y} \ &, \quad v_y = -\pdiff{\psi}{x}
+e^{2\pi im} &= 1
 \end{align}
 
 \begin{equation}
-\psi(x,y) = v_\infty\delta(x)f\left(\frac{y}{\delta(x)}\right)
+r\pdiff{}{r}\left(r\pdiff{}{r}f(r)\right) = m^2f(r)
+\end{equation}
+
+polynomial ansatz:
+\begin{equation}
+f(r) = r^\alpha
 \end{equation}
 
 \begin{align}
-v_x=\pdiff{\psi}{y} &= v_\infty\delta(x)\diff{f(z}{z}\diff{z}{y} \\
-&= v_\infty \delta(x) \diff{f(z)}{z}\frac{1}{\delta(x)}\\
-&= v_\infty \diff{f(z)}{z} \\
-&\require v_\infty g(z)
+r\pdiff{}{r}\left(r\alpha r^{\alpha-1}\right) &= \alpha^2 r^\alpha \require m^2 r^\alpha\\
+leadsto
+\alpha &= \pm m
 \end{align}
 
 \begin{equation}
-f' = \diff{f(z)}{z}g(z)
+\Phi(r,\phi) = f(r)g(\phi) = r^{\pm m}e^{im\phi}
 \end{equation}
 
-\noindent\makebox[\linewidth]{\rule{\textwidth}{0.5pt}}
-
+Since the Laplace equation is linear in $\Phi$, the most general solution for $\Phi$ is a linear superposition of all possible solutions:
 \begin{align}
-v_y &= -\pdiff{\psi}{x} \\
-&=  -v_\infty\diff{\delta(x)}{x}f(z) - v_\infty \delta(x)\diff{f(z)}{z}\diff{z}{x}\\
-&= v_\infty \left[-f + \frac{y f'}{\delta}\right] \diff{\delta(x)}{x}
+\Phi(r\phi) &= \sum_{m=-\infty}^\infty \left(a_m r^m + b_m r^{-m}\right) e^{im\phi} \\
+&= \sum_{m=1}^{\infty} \left[ \left(a_m r^m + b_m r^{-m}\right)e^{im\phi} + \left(c_m r^m + d_m rÅ {-m}\right) e^{-im\phi}\right]
 \end{align}
 
+Remark:
 \begin{align}
-\pdiff{v_x}{x} &= \left(v_\infty f''\right)\left(\frac{-y}{\delta^2}\right)\diff{\delta(x)}{x} = -\frac{v_\infty y f''}{\delta^2}\diff{\delta(x)}{x} \\
-\pdiff{v_x}{y} &= (v_\infty f'') \frac{1}{\delta} = \frac{v_\infty f''}{\delta} \\
-\pdiff{v_x}{y} &= \frac{v_\infty f''}{\delta^2}
+\Phi_{m=0} &= a_0+b_0 = \mathrm{constant} \\
+\leadsto
+\vec{u}_{m=0} &= \vec{\nabla}\Phi_{m=0}=0
 \end{align}
 
-\begin{align}
-\begin{split}
-v_x\pdiff{v_x}{x} + v_y\pdiff{v_x}{y} - \frac{\mu}{\rho_0}\ppdiff{v_x}{y} &=
--(v_\infty f') \left(\frac{v_\infty y f''}{\delta^2} \diff{\delta(x)}{x}\right) \\
-&\hspace{5mm} + \left(v_\infty\left[-f\frac{yf'}{\delta}\right]\diff{\delta(x)}{x}\right) \left(\frac{v_\infty f''}{\delta}\right) \\
-&\hspace{5mm} -\frac{\mu}{\rho_0} \left(\frac{v_\infty f''}{\delta^2}\right)
-\end{split} \\
-&= -\frac{v_\infty^2}{\delta}\diff{\delta}{x} ff'' - \frac{\mu}{\rho_0} \frac{v_\infty}{\delta^2}f'''\\
-&= 0
-\end{align}
+Determination of amplitudes $a_m$, $b_m$, $c_m$, and $d_m$ via boundary conditions:
 
 \begin{equation}
-\frac{\rho_0 v_\infty}{\mu} \delta(x) \diff{\delta(x)}{x} = -\frac{f'''(z)}{f(z)f''(z)} \require c_1^2
+\Phi(r\rightarrow\infty, \phi) = u_\infty x = u_\infty r\cos\phi
 \end{equation}
 
 \begin{equation}
-\delta\diff{\delta}{x} = \frac{1}{2}\diff{\delta^2}{x} = c_1^2\frac{\mu}{\rho_0v_\infty}\\
+\vec{u}\cdot \vec{e}_r |_{r=R} = \vec{\nabla}\Phi\cdot\vec{e}_r|_{r=R} = \pdiff{\Phi}{r}\biggm\vert_{r=R}=0
 \end{equation}
+
+\begin{shaded}
+I left out the derivations on page 36
+\end{shaded}
 
 \begin{equation}
-\delta^2 = 2c_1^2 \frac{\mu}{\rho_0v_\infty}x + c_2
+\Phi(r,\phi) = u_\infty r \cos \phi \left(1+\frac{R^2}{r^2}\right) = u_\infty x \left(1+\frac{R^2}{x^2+y^2}\right) = \Phi(x,y)
 \end{equation}
-$c_2=0$ since $\delta(x=0)=0$.
-
-\begin{equation}
-\delta(x) = c_1\sqrt{\frac{2\mu}{\rho_0v_\infty}x}
-\end{equation}
-
-\begin{equation}
-\delta(x)=\sqrt{\frac{\mu}{\rho_0v_\infty}x}
-\end{equation}
-$c_1=\frac{1}{\sqrt{2}}$. Freedom of choice because of arbitrary definition of $\delta$; for example, $v_x(y=\delta)=0.99v_\infty$ or $v_x(x=\delta)=0.95v_\infty$.
-
-This is the same result as the order of magnitude calculation when we calculated the x-component of the Navier-stokes equation earlier in this section.
-
-\begin{equation}
-f'''(z) +\frac{1}{2} f(z)f''(z) = 0
-\end{equation}
-
-\begin{equation}
-f(z)\ddiff{f(z)}{z}+2\dddiff{f(z)}{z}=0
-\end{equation}
-This is Blasius' equation. A special case of the more general Falker-Skan equation.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
