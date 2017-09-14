@@ -1,68 +1,69 @@
-\section{Ideal flow: planar 2-dimensional potential flow around cylinder (26-36)}
+\section{Ideal flow: planar 2-dimensional potential flow around cylinder}
 
 \begin{framed}
-For further details see section 4.3, 4.9 and 7.1-3 in the KCD book
+For further details see section 4.3, 4.9 and 7.1-6 in the KCD book
 \end{framed}
 
-\begin{shaded}
-I skipped the summary of NS equation on page 26 of hand written notes. Maybe there should be an introductory paragraph here with references to equations from previous sections.
-\end{shaded}
+For a planar two-dimensional stationary flow the velocity field
+\begin{equation}
+\vec{u}=
+\begin{pmatrix}
+u_x(x,y)\\u_y(x,y)\\0
+\end{pmatrix}
+\end{equation}
+does not depend on $z$ and $t$ and the vector does not have a $z$-component. The flow is defined to be "ideal" once the viscosity $\mu=0$ is put to zero. The mass density $\rho=\rho_0$ is assumed to be constant. We will determine the two velocity components $u_x(x,y)$ and $u_y(x,y)$ from the two equations $\vec{\nabla}\cdot\vec{u}=0$ and $\vec{\nabla}\times\vec{u}=0$ defining incompressible and irrotational flow. The pressure field $p(x,y)$ is then determined via Bernoulli's equation.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.5\textwidth]{week3/planar-flow}
-    \caption{}
+    \caption{2-dimensional ideal flow around a cylinder.}
     \label{fig:planar-flow}
 \end{figure}
 
-Questions to \fref{fig:planar-flow}: 1) $\vec{u} = \vec{u}(x,y,z)$?, 2) pathlines (streamlines)?
-
+Questions to \fref{fig:planar-flow}:
+\begin{enumerate}
+\item How does the velocity field $\vec{u} = \vec{u}(x,y,z)$ look like?
+\item How do the pathlines (streamlines) look like?
+\end{enumerate}
 \begin{equation}
 \vec{\nabla}\times\vec{u} = 0 \Rightarrow \vec{u}(\vec{r}) = \vec{\nabla}\phi(\vec{r})
 \end{equation}
-where $\phi(\vec{r})$ is a velocity potential.
-
+where $\phi(\vec{r})$ is the velocity potential.
 \begin{align}
 \vec{\nabla}\times\vec{u} &= 0\\
 \leadsto
-\vec{\nabla}\cdot\vec{\nabla}\phi(\vec{r}) &= \left(\ppdiff{}{x}+\ppdiff{}{y}+\ppdiff{}{z}\right)\phi(x,y)\\
-&= \left(\ppdiff{}{x}+\ppdiff{}{y}\right)\phi(x,y) = 0
+\vec{\nabla}\cdot\vec{\nabla}\phi(\vec{r}) &= \left(\ppdiff{}{x}+\ppdiff{}{y}\right)\phi(x,y) = 0
 \end{align}
 This second order differential equation is the Laplace equation.
 
 Question: How does the cylinder (obstacle) enter in solving the Laplace equation?
 
-Two boundary conditions.
+There are two boundary conditions.
 
-1:
+First boudary condition:
 \begin{align}
 \vec{u}(|\vec{r}|\rightarrow\infty) &= \vec{u}_\infty = u_\infty\vec{e}_x \\
 \leadsto
 \phi(|\vec{r}|\rightarrow\infty) &= u_\infty x + \mathrm{constant}
 \end{align}
-
-2:
+Second boundary condition:
 \begin{equation}
-0=u_\mathrm{surface}\cdot \vec{n} = \vec{\nabla}\phi\biggm\vert_\mathrm{surface}\cdot\vec{n}
+0=\vec{u}_\mathrm{surface}\cdot \vec{n} = \vec{\nabla}\phi\biggm\vert_\mathrm{surface}\cdot\vec{n}
 \end{equation}
-
-The fluid particle does not flow into the surface; only tangential component.
+The fluid particle does not flow into/out of the surface; only tangential component.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.5\textwidth]{week3/planar-flow2}
-    \caption{}
+    \caption{Tangential components of the velocity field.}
     \label{fig:planar-flow2}
 \end{figure}
 
 For the flow around the cylinder the solution of the Laplace equation with the two boundary conditions "falls from the sky" (for the moment):
-\begin{equation}
-\phi(x,y)=u_\infty\times\left(1+\frac{R^2}{x^2+y^2}\right)
+\begin{equation}\label{eq:cylinder-flow}
+\phi(x,y)=u_\infty\left(1+\frac{R^2}{x^2+y^2}\right).
 \end{equation}
-
-\begin{shaded}
-I skipped the last part of page 28 here
-\end{shaded}
+It fulfills Laplace's equation and the two boundary conditions.
 
 Velocity field:
 \begin{equation}
@@ -85,49 +86,40 @@ u_y &= -u_\infty \frac{2xyR^2}{(x^2+y^2)^2}
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.7\textwidth]{week3/velocity-field}
-    \caption{}
-    \label{fig:velocity-field}
+    \caption{Streamlines around the cylinder.}
+    \label{fig:velocity-field2}
 \end{figure}
 
-examples:
+Examples:
 \begin{align}
 \vec{u}\biggm\vert_{x\rightarrow\pm\infty} &= u_\infty\vec{e}_x = \vec{u}\biggm\vert_{y\rightarrow\pm\infty}\\
 \vec{u}\biggm\vert_{\small\vec{r}=\begin{pmatrix} 0 \\ R
 \end{pmatrix}} &= 2u_\infty\vec{e}_x \\
 \vec{u}\biggm\vert_{\small\vec{r}=\begin{pmatrix} R \\ 0
 \end{pmatrix}} &= 0 = \vec{u}\biggm\vert_{\small\vec{r}=\begin{pmatrix} -R \\ 0
-\end{pmatrix}}
+\end{pmatrix}}\label{eq:stagnation}
 \end{align}
+The two points in \eqref{eq:stagnation} with $\vec{u}=0$ are called stagnation points.
 
-
-\newpage
 \subsection{Pathline around a cylinder}
-
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.7\textwidth]{week3/pathline-cylinder}\\
     \includegraphics[width=.7\textwidth]{week3/pathline-cylinder2}
-    \caption{}
+    \caption{Path of fluid particles around the cylinder.}
     \label{fig:pathline-cylinder}
 \end{figure}
-
-Top part of \fref{fig:pathline-cylinder} shows the Lagrangian picture: follows particle through all times. the bottom part shows the Eulerian picture, which is a snapshot of all fluid particles at one particular time.
+Top part of \fref{fig:pathline-cylinder} shows the Lagrangian picture: a particle is followed through all times. The bottom part shows the Eulerian picture, which is a snapshot of all fluid particles at one particular time.
 
 Connection between Lagrangian and Eulerian picture:
 \begin{equation}
 \diff{\vec{r}}{t} = \vec{u}(\vec{r},t)
 \end{equation}
-
-For stationary flows
+Given the snapshots $\vec{u}(\vec{r},t)$, we can calculate the pathlines. For stationary flows
 \begin{equation}
-\vec{u}(\vec{r},t)=\vec{u}(\vec{r}) \Rightarrow \mathrm{pathline} = \mathrm{streamline}
+\vec{u}(\vec{r},t)=\vec{u}(\vec{r}) \Rightarrow \mathrm{pathline} = \mathrm{streamline}.
 \end{equation}
-
-Given the snapshots $\vec{u}(\vec{r},t)$, we can calculate the pathlines.
-
 Given the pathlines, we can construct the snapshots.
-
-This sounds like the "chicken and egg" problem.
 
 \bigskip
 Question: How to calculate the streamlines?
@@ -137,7 +129,7 @@ Definition of streamline:
 \begin{equation}
 d\vec{s}\parallel\vec{u},
 \end{equation}
-where $ds$ is a line element of a streamline.
+where $\vec{ds}$ is a line element of a streamline.
 \begin{align}
 0=d\vec{s}\times\vec{u} &=
 \begin{vmatrix}
@@ -147,8 +139,9 @@ u_x & u_y & 0
 \end{vmatrix} =
 (u_ydx-u_xdy)\vec{e}_z\\
 \leadsto
-\diff{y}{x} &= \frac{u_y}{u_x} = -\frac{2xyR^2}{(x^2+y^2)^2+R^2(y^2-x^2)}
+\diff{y}{x} &= \frac{u_y}{u_x} = -\frac{2xyR^2}{(x^2+y^2)^2+R^2(y^2-x^2)}.
 \end{align}
+We will not try to solve this ugly non-linear differential equation.
 
 Second approach: introduce the streamfunction $\psi(x,y)$.
 
@@ -156,26 +149,25 @@ Incompressibility gives us:
 \begin{equation}
  \vec{\nabla}\cdot\vec{u} = \pdiff{u_x}{x}+\pdiff{u_y}{y}=0
 \end{equation}
-which leads to
+which leads to the ansatz
 \begin{equation}
  u_x = \pdiff{\psi}{y}, \quad u_y = -\pdiff{\psi}{x} \label{eq:uxuy2}
 \end{equation}
-
 \begin{align}
 d\vec{s}\times\vec{u} &= (u_ydx-u_xdy)\vec{e}_x \\
 &= \left(-\pdiff{\psi}{x}dx-\pdiff{\psi}{y}dy\right)\vec{e}_z\\
 &= -d\psi \vec{e}_z \require 0
 \end{align}
-The streamfunction is constant along a streamline. This represents an \emph{isopotentialline} of the streamfunction and describes a streamline.
+The streamfunction is constant along a streamline. This represents an \emph{isopotential line} of the streamfunction and describes a streamline.
 
 From the defining functions of the streamfunction in \eqref{eq:uxuy2} and the $u_x$, $u_y$ solution for the ideal flow around a cylinder in \eqref{eq:uxuy1}, we can determine $\psi$ by partial integration
 \begin{align}
-\psi(x,y) &= v_\infty y\left(1-\frac{R"2}{x^2+y^2}\right)\\
-&= v_\infty \sin\psi\left(r-\frac{R^2}{r}\right)
+\psi(x,y) &= v_\infty y\left(1-\frac{R^2}{x^2+y^2}\right)\\
+&= v_\infty \sin\phi\left(r-\frac{R^2}{r}\right)
 \end{align}
-
+In the last step we have introduced the cylindrical coordinates $x=r\cos\phi$ and $y = r\sin\phi$. The intermediate steps of the partial integration have been left out.
 \begin{framed}
-\textbf{Remark:} relationship between velocity potential and streamfunction $\phi=\mathrm{constant}$, $\psi=\mathrm{constant}$ represent and orthogonal set of curves, because
+\textbf{Remark:} relationship between velocity potential and streamfunction\newline $\phi=\mathrm{constant}$, $\psi=\mathrm{constant}$ represents an orthogonal set of curves, because
 \begin{equation}
 \left(\vec{\nabla}\phi\right)\cdot\left(\vec{\nabla}\psi\right) = 
 \begin{pmatrix}
@@ -192,108 +184,116 @@ u_x \\ u_y
 \end{pmatrix} = 0
 \end{equation}
 \end{framed}
-
-\begin{shaded}
-I left out page 32a-32d here.
-\end{shaded}
-
-Two dimensional potential flow around an infinitely long cylinder 
-
-Because of cylinder symmetry we can transform from  to cylindrical coordinates
+Back to the derivation of \eqref{eq:cylinder-flow}: two dimensional potential flow around an infinitely long cylinder. Because of cylinder symmetry we can transform from Cartesian to cylindrical coordinates
 \begin{align}
 x &= r\cos\phi\\
 y &= r\sin\phi
 \end{align}
-
 \begin{equation}
 \Phi(x,y) \rightarrow \Phi(r,\phi)
 \end{equation}
-
 \begin{align}
 \Delta\Phi(x,y) &= \left(\ppdiff{}{x}+\ppdiff{}{y}\right)\Phi(x,y) \\
 &= \left[\frac{1}{r}\pdiff{}{r}\left(r\pdiff{}{r}\right) + \frac{1}{r^2}\pdiff{}{\phi}\right]\Phi(r,\phi)\\
 &= 0\\
 \leadsto
-r\pdiff{}{r}\left(\pdiff{\Phi}{r}\right) &= -\ppdiff{\Phi}{\phi}
+r\pdiff{}{r}\left(r\pdiff{\Phi}{r}\right) &= -\ppdiff{\Phi}{\phi}
 \end{align}
-
-\begin{shaded}
-I left out page 33a-33b here.
-\end{shaded}
-
 Ansatz: factorization
 \begin{equation}
 \Phi(r,\phi) = f(r)g(\phi)
 \end{equation}
-
 \begin{align}
 \frac{1}{f\cdot g} r\pdiff{}{r}\left(r\pdiff{(f(r)g(\phi))}{r}\right) &= -\frac{1}{f\cdot g}\ppdiff{(f(r)g(\phi))}{\phi} \\
 \leadsto
 \frac{1}{f(r)}r\pdiff{}{r}\left(r\pdiff{f(r)}{r}\right) &= -\frac{1}{g(\phi)}\ppdiff{g(\phi)}{\phi} \require m^2
 \end{align}
-
-Left part depends only on $r$, middle part depends only on $\phi$, and right part is a constant, which does neither depend on $r$ nor $\phi$.
-
+Left part depends only on $r$, and the middle part depends only on $\phi$. As a consequence, both have to be equal to a constant, which does neither depend on $r$ nor $\phi$.
 \begin{align}
 \ppdiff{g(\phi)}{\phi} &= -m^2g(\phi)\\
 \leadsto
 g(\phi) = e^{im\phi} &=  \cos m\phi + i\sin m\phi
 \end{align}
-
-requirement:
+Requirement:
 \begin{align}
 g(\phi) &= g(\phi+2\pi)\\
 \leadsto
 e^{im\phi} &= e^{im(\phi+2m)}\\
 \leadsto
-e^{2\pi im} &= 1
+e^{2\pi im} &= 1.
 \end{align}
-
+This fixes $m$ to integer values:
 \begin{equation}
+m = \dots,-2,-1,0,1,2,\dots
+\end{equation}
+\begin{equation}\label{eq:m2fr}
 r\pdiff{}{r}\left(r\pdiff{}{r}f(r)\right) = m^2f(r)
 \end{equation}
-
-polynomial ansatz:
+Polynomial ansatz:
 \begin{equation}
 f(r) = r^\alpha
 \end{equation}
-
 \begin{align}
 r\pdiff{}{r}\left(r\alpha r^{\alpha-1}\right) &= \alpha^2 r^\alpha \require m^2 r^\alpha\\
-leadsto
+\leadsto
 \alpha &= \pm m
 \end{align}
-
 \begin{equation}
 \Phi(r,\phi) = f(r)g(\phi) = r^{\pm m}e^{im\phi}
 \end{equation}
-
 Since the Laplace equation is linear in $\Phi$, the most general solution for $\Phi$ is a linear superposition of all possible solutions:
 \begin{align}
-\Phi(r\phi) &= \sum_{m=-\infty}^\infty \left(a_m r^m + b_m r^{-m}\right) e^{im\phi} \\
-&= \sum_{m=1}^{\infty} \left[ \left(a_m r^m + b_m r^{-m}\right)e^{im\phi} + \left(c_m r^m + d_m rÅ {-m}\right) e^{-im\phi}\right]
+\Phi(r,\phi) &= \sum_{m=-\infty}^\infty \left(a_m r^m + b_m r^{-m}\right) e^{im\phi} \\
+&= \sum_{m=1}^{\infty} \left[ \left(a_m r^m + b_m r^{-m}\right)e^{im\phi} + \left(c_m r^m + d_m r^{-m}\right) e^{-im\phi}\right]
 \end{align}
-
 Remark:
 \begin{align}
 \Phi_{m=0} &= a_0+b_0 = \mathrm{constant} \\
 \leadsto
 \vec{u}_{m=0} &= \vec{\nabla}\Phi_{m=0}=0
 \end{align}
+Remark: Another $m=0$ solution is $\phi_{m=0}=c\ln r$. It fulfills \eqref{eq:m2fr}. However, it is not able to fulfill the boundary condition at $r=R$, and has to be discarded.
 
 Determination of amplitudes $a_m$, $b_m$, $c_m$, and $d_m$ via boundary conditions:
-
 \begin{equation}
 \Phi(r\rightarrow\infty, \phi) = u_\infty x = u_\infty r\cos\phi
+\end{equation}
+\begin{align}
+\Phi(r\rightarrow\infty,\phi) &= \sum_{m=1}^\infty \left(a_mr^me^{im\phi}+c_mr^me^{-im\phi}\right)\\
+&\require u_\infty r\cos\phi\\
+&= u_\infty r\frac{e^{i\phi}+e^{-i\phi}}{2}
+\end{align}
+\begin{equation}
+a_2=a_3=\dots=c_2=c_3=\dots=0
+\end{equation}
+\begin{equation}
+a_1=\frac{u_\infty}{2}=c_1
+\end{equation}
+\begin{equation}
+\Phi(r,\phi)=u_\infty r \frac{e^{i\phi}+e^{-i\phi}}{2} + \sum_{m=1}^\infty \left(\frac{b_m}{r^m}e^{im\phi}+\frac{d_m}{r^m}e^{-i\phi}\right)
 \end{equation}
 
 \begin{equation}
 \vec{u}\cdot \vec{e}_r |_{r=R} = \vec{\nabla}\Phi\cdot\vec{e}_r|_{r=R} = \pdiff{\Phi}{r}\biggm\vert_{r=R}=0
 \end{equation}
-
-\begin{shaded}
-I left out the derivations on page 36
-\end{shaded}
+\begin{equation}
+\pdiff{\Phi(r,\phi)}{r}\biggm\vert_{r=R} = u_\infty\frac{e^{i\phi}+e^{-i\phi}}{2} + \sum_{m=1}^\infty \frac{(-m)}{r^{m+1}}\biggm\vert_{r=R}\left(b_me^{im\phi}+d_me^{-im\phi}\right) \require 0
+\end{equation}
+\begin{equation}
+b_2=b_3=\dots=d_2=d_3=\dots=0
+\end{equation}
+\begin{align}
+\frac{u_\infty}{2}-\frac{b_1}{R^2} &= 0 = \frac{u_\infty}{2}-\frac{d_1}{R^2}\\
+\leadsto
+b_1&=d_1 = \frac{u_\infty R^2}{2}
+\end{align}
+\begin{equation}
+\Phi(r,\phi) = u_\infty r \frac{e^{i\phi}+e^{-i\phi}}{2} + \frac{u_\infty R^2}{2}\frac{e^{i\phi}+e^{-i\phi}}{2}
+\end{equation}
+where
+\begin{equation}
+\frac{e^{i\phi}+e^{-i\phi}}{2} = \cos\phi
+\end{equation}
 
 \begin{equation}
 \Phi(r,\phi) = u_\infty r \cos \phi \left(1+\frac{R^2}{r^2}\right) = u_\infty x \left(1+\frac{R^2}{x^2+y^2}\right) = \Phi(x,y)

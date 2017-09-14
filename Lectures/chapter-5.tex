@@ -1,5 +1,4 @@
-\section{Ideal potential flows (continued) (37-44)}
-
+\section{More on ideal potential flows}
 \begin{framed}
 \textbf{Opening remark:} 2-dimensional potential flow solutions will often look like
 \begin{equation}
@@ -9,11 +8,10 @@ Any function $f(x,y)$, which fulfills
 \begin{equation}
 \ppdiff{f}{x}+\ppdiff{f}{y}=0 \qquad \mathrm{and}\qquad f(|x|,|y|\rightarrow\infty) = 0,
 \end{equation}
-describes a flow around some obstacle.
+describes a flow around some obstacle. The question is: which obstacle? Let's play around with $f(x,y)$.
 \end{framed}
 
-
-\textbf{Play 1:}
+\textbf{Example 1:}
 \begin{equation}
 \Phi(x,y)=\frac{m}{2\pi} \ln \sqrt{x^2+y^2}
 \end{equation}
@@ -21,11 +19,15 @@ represents the radial flow resulting from a source with strength $m$. See \fref{
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.5\textwidth]{week3/radial-streamlines}\\
-    \caption{}
+    \caption{Two-dimensional radial flow resulting from a source line along the z-axis.}
     \label{fig:radial-streamlines}
 \end{figure}
+\begin{align}
+u_x &= \pdiff{\Phi}{x} = \frac{m}{2\pi}\frac{x}{x^2+y^2}=\frac{m}{2\pi}\frac{\cos\phi}{r}\\
+u_y &= \pdiff{\Phi}{y} = \frac{m}{2\pi}\frac{y}{x^2+y^2}=\frac{m}{2\pi}\frac{\sin\phi}{r}
+\end{align}
 
-\textbf{Play 2:} method of images. Source flow in front of a wall. See \fref{fig:mirror-source}.
+\textbf{Example 2 (method of images):} Source flow in front of a wall. See \fref{fig:mirror-source}.
 
 Boundary condition: no flow through the wall; only tangential component.
 \begin{equation}
@@ -33,12 +35,12 @@ Boundary condition: no flow through the wall; only tangential component.
 \end{equation}
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=.6\textwidth]{week3/mirror-source}\\
-    \caption{}
+    \includegraphics[width=.6\textwidth]{week3/mirror-source}
+    \caption{Source flow in front of a wall.}
     \label{fig:mirror-source}
 \end{figure}
 
-\textbf{Play 3:} flow past a 2-dimensional half-body. See \fref{fig:half-body}.
+\textbf{Example 3:} flow past a 2-dimensional half-body. See \fref{fig:half-body}.
 \begin{align}
 \Phi &= u_\infty x + \frac{m}{2\pi}\ln\sqrt{x^2+y^2}\\
 \leadsto
@@ -59,61 +61,55 @@ Engineering flow interpretations:
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.6\textwidth]{week3/half-body}\\
-    \caption{}
+    \caption{Flow past 2-dimensional half-body.}
     \label{fig:half-body}
 \end{figure}
 
-\textbf{Play 4:} numerial solutions (KCD section 6: Computational Fluid Dynamics)
+\textbf{Example 4 ("beauty of mathematics"):} Conformal mappings.
 
-\textbf{Play 5:} "beauty of mathematics". Conformal mappings.
 Complex potential
 \begin{equation}
 w(z) = \phi(x,y)+i\psi(x,y)
 \end{equation}
-where $z=x+iy$.
+where $z=x+iy$ and $i^2=-1$.
 
 Velocity:
 \begin{align}
 \diff{w(z)}{z} &= \diff{w(z)}{z}\biggm\vert_{dz=dx} = \pdiff{\phi}{x}+i\pdiff{\psi}{x} = u_x-iu_y \\
-&= \diff{w(z)}{z}\biggm\vert_{dz=idy} = \pdiff{\phi}{y}+i\pdiff{\psi}{y} = \pdiff{\psi}{y}-i\pdiff{\phi}{y} = u_x-iu_y
+&= \diff{w(z)}{z}\biggm\vert_{dz=idy} = \frac{\partial\phi}{i\partial y}+i\frac{\partial\psi}{i\partial y} = \pdiff{\psi}{y}-i\pdiff{\phi}{y} = u_x-iu_y
 \end{align}
 
-Differentiable example 1:
+\textbf{Example 5:}
 \begin{equation}
 w(z)=u_\infty z = u_\infty(x+iy) = u_\infty x + iu_\infty y
 \end{equation}
 describes the constant flow $\vec{u}=u_\infty \vec{e}_x$.
 
-Differentiable example 2:
+\textbf{Example 6:}
 \begin{align}
 w(z) &= \frac{m}{2\pi}\ln z = \frac{m}{2\pi} \ln(x+iy)\\
-&= \frac{m}{2\pi}\ln(re^{i\theta}\\
+&= \frac{m}{2\pi}\ln\left(re^{i\theta}\right)\\
 &= \frac{m}{2\pi}\ln r +\frac{m}{2\pi}\ln e^{i\theta}\\
 &= \frac{m}{2\pi}\ln\sqrt{x^2+y^2} + i\frac{m}{2\pi}\theta
 \end{align}
-The two terms in the last line is the velocity field and stream function of a radial source flow (see "play 1").
+The two terms in the last line are the velocity potential and the stream function of a radial source flow (see "Example 1").
 
-Differentiable example 3:
+\textbf{Example 7:}
 \begin{align}
 w(z) &= \frac{A}{2}z^2 = \frac{A}{2}(x+iy)^2\\
 &= \frac{A}{2}(x^2-y^2)+iAxy
 \end{align}
 
-Differentiable example 4:
+\textbf{Example 8:} flow around cylinder with radius $R$
 \begin{align}
 w(z) &= \phi(x,y) +i\psi(x,y) = u_\infty x\left(1+\frac{R^2}{x^2+y^2}\right) + iu_\infty y \left(1-\frac{R^2}{x^2+y^2}\right) \\
 & =u_\infty(x+iy) + u_\infty R^2\frac{x-iy}{x^2+y^2} \\
 &= u_\infty(x+iy)+\frac{u_\infty R^2}{x+iy}\\
 &= u_\infty\left(z+\frac{R^2}{z}\right)
 \end{align}
-
-flow around cylinder with radius $R$:
+Change of variable $(z\rightarrow\tilde{z})$:
 \begin{equation}
-w(z)=u_\infty\left(z+\frac{R^2}{z}\right)
-\end{equation}
-change of variable:
-\begin{equation}
-z)z(\tilde{z})
+z=z(\tilde{z})
 \end{equation}
 Example:
 \begin{align}
@@ -122,21 +118,9 @@ Example:
 w_\mathrm{new\ obstacle}(\tilde{z}) &= w_\mathrm{cylinder}(z(\tilde{z}))
 \end{align}
 
-\begin{shaded}
-Should we include the figure on the left half of page 43 here?
-\end{shaded}
-
-
-\begin{framed}
-\textbf{Remark:} other applications of conformal mappings
-
-\textbf{Electrostatics}
-\begin{equation}
-\Delta\phi = \vec{\nabla}\cdot\vec{\nabla\phi=0}
-\end{equation}
-
-\textbf{Heat flux}
-\begin{equation}
-\pdiff{T(x,y)}{t}=\kappa\vec{\nabla}\cdot\vec{\nabla}T(x,y) \Rightarrow \Delta T(x,y) = 0
-\end{equation}
-\end{framed}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.8\textwidth]{week3/profiles}\\
+    \caption{Several examples for different $z_0$ and $R$. e) is known as Joukowski's airfoil.}
+    \label{fig:profiles}
+\end{figure}
