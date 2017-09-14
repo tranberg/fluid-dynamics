@@ -11,7 +11,7 @@ For a planar two-dimensional stationary flow the velocity field
 u_x(x,y)\\u_y(x,y)\\0
 \end{pmatrix}
 \end{equation}
-does not depend on $z$ and $t$ and the vector does not have a $z$-component. The flow is defined to be "ideal" once the viscosity $\mu=0$ is put to zero. The mass density $\rho=\rho_0$ is assumed to be constant. We will determine the two velocity components $u_x(x,y)$ and $u_y(x,y)$ from the two equations $\vec{\nabla}\cdot\vec{u}=0$ and $\vec{\nabla}\times\vec{u}=0$ defining incompressible and irrotational flow. The pressure field $p(x,y)$ is then determined via Bernoulli's equation.
+does not depend on $z$ and $t$ and the vector does not have a $z$-component. The flow is defined to be "ideal" once the viscosity $\mu=0$ is put to zero. The mass density $\rho=\rho_0$ is assumed to be constant. We will determine the two velocity components $u_x(x,y)$ and $u_y(x,y)$ from the two equations $\vec{\nabla}\cdot\vec{u}=0$ and $\vec{\nabla}\times\vec{u}=0$ defining incompressible and irrotational flows. The pressure field $p(x,y)$ is then determined via Bernoulli's equation.
 
 \begin{figure}[!h]
     \centering
@@ -22,11 +22,11 @@ does not depend on $z$ and $t$ and the vector does not have a $z$-component. The
 
 Questions to \fref{fig:planar-flow}:
 \begin{enumerate}
-\item How does the velocity field $\vec{u} = \vec{u}(x,y,z)$ look like?
+\item How does the velocity field $\vec{u} = \vec{u}(x,y)$ look like?
 \item How do the pathlines (streamlines) look like?
 \end{enumerate}
 \begin{equation}
-\vec{\nabla}\times\vec{u} = 0 \Rightarrow \vec{u}(\vec{r}) = \vec{\nabla}\phi(\vec{r})
+\vec{\nabla}\cdot\vec{u} = 0 \Rightarrow \vec{u}(\vec{r}) = \vec{\nabla}\phi(\vec{r})
 \end{equation}
 where $\phi(\vec{r})$ is the velocity potential.
 \begin{align}
@@ -61,7 +61,7 @@ The fluid particle does not flow into/out of the surface; only tangential compon
 
 For the flow around the cylinder the solution of the Laplace equation with the two boundary conditions "falls from the sky" (for the moment):
 \begin{equation}\label{eq:cylinder-flow}
-\phi(x,y)=u_\infty\left(1+\frac{R^2}{x^2+y^2}\right).
+\phi(x,y)=u_\infty x\left(1+\frac{R^2}{x^2+y^2}\right).
 \end{equation}
 It fulfills Laplace's equation and the two boundary conditions.
 
@@ -69,7 +69,7 @@ Velocity field:
 \begin{equation}
 \vec{u} = \begin{pmatrix}
 u_x\\u_y
-\end{pmatrix}  = 
+\end{pmatrix}  =
 \vec{\nabla}\phi(x,y) = \begin{pmatrix}
 \pdiff{\phi}{x} \\
 \pdiff{\phi}{y}
@@ -115,11 +115,10 @@ Connection between Lagrangian and Eulerian picture:
 \begin{equation}
 \diff{\vec{r}}{t} = \vec{u}(\vec{r},t)
 \end{equation}
-Given the snapshots $\vec{u}(\vec{r},t)$, we can calculate the pathlines. For stationary flows
+Given the snapshots $\vec{u}(\vec{r},t)$, we can calculate the pathlines. Given the pathlines, we can construct the snapshots. For stationary flows
 \begin{equation}
 \vec{u}(\vec{r},t)=\vec{u}(\vec{r}) \Rightarrow \mathrm{pathline} = \mathrm{streamline}.
 \end{equation}
-Given the pathlines, we can construct the snapshots.
 
 \bigskip
 Question: How to calculate the streamlines?
@@ -167,15 +166,15 @@ From the defining functions of the streamfunction in \eqref{eq:uxuy2} and the $u
 \end{align}
 In the last step we have introduced the cylindrical coordinates $x=r\cos\phi$ and $y = r\sin\phi$. The intermediate steps of the partial integration have been left out.
 \begin{framed}
-\textbf{Remark:} relationship between velocity potential and streamfunction\newline $\phi=\mathrm{constant}$, $\psi=\mathrm{constant}$ represents an orthogonal set of curves, because
+\textbf{Remark:} relationship between velocity potential and streamfunction\newline $\phi=\mathrm{constant}$, $\psi=\mathrm{constant}$ represent an orthogonal set of curves, because
 \begin{equation}
-\left(\vec{\nabla}\phi\right)\cdot\left(\vec{\nabla}\psi\right) = 
+\left(\vec{\nabla}\phi\right)\cdot\left(\vec{\nabla}\psi\right) =
 \begin{pmatrix}
 \pdiff{\phi}{x} \\ \pdiff{\phi}{y}
 \end{pmatrix} \cdot
 \begin{pmatrix}
 \pdiff{\psi}{x} \\ \pdiff{\psi}{y}
-\end{pmatrix} = 
+\end{pmatrix} =
 \begin{pmatrix}
 u_x \\ u_y
 \end{pmatrix}\cdot
@@ -184,7 +183,7 @@ u_x \\ u_y
 \end{pmatrix} = 0
 \end{equation}
 \end{framed}
-Back to the derivation of \eqref{eq:cylinder-flow}: two dimensional potential flow around an infinitely long cylinder. Because of cylinder symmetry we can transform from Cartesian to cylindrical coordinates
+\textbf{Back to the derivation of \eqref{eq:cylinder-flow}:} two dimensional potential flow around an infinitely long cylinder. Because of cylinder symmetry we can transform from Cartesian to cylindrical coordinates
 \begin{align}
 x &= r\cos\phi\\
 y &= r\sin\phi
