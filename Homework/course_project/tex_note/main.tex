@@ -36,8 +36,8 @@
 
 % Title stuff
 \title{Note for Fluid Dynamics Midterm Exam Project I}
-\author{Bo Tranberg\ \ \ Kun Zhu \\\href{mailto:bo@eng.au.dk}{bo@eng.au.dk}\href{mailto:kunzhu@eng.au.dk}\ \ \ {kunzhu@eng.au.dk}}
-\date{\today}
+\author{Bo Tranberg\\\href{mailto:bo@eng.au.dk}{\small bo@eng.au.dk}\medskip\\ Kun Zhu\\\href{mailto:kunzhu@eng.au.dk}{\small kunzhu@eng.au.dk}}
+\date{September 25, 2017}
 
 %----------------------------------------------------------------------------------------
 
@@ -45,13 +45,11 @@
 \maketitle
 
 \large{
-	\textbf{Remark}: This is an auxiliary note which you are free to choose use or not for the midterm exam project I. 
+	\textbf{Remark}: This is an auxiliary note which you are free to use or not for the midterm exam project I. 
 	}
 
 \section{Coordinate rotation}
-\begin{framed}
-	Explain a bit why we need to rotate the coordinate.
-\end{framed}
+The biggest challenge in this course project is to extend the wind farm modeling from one dimension (as you implemented in the first week's homework) to two dimensions. There are two ways to handle changing wind direction. One approach is to extend all the formulas you have already implemented to include the wind direction. Another approach, which we recommend, is to rotate the coordinates of the wind farm so that the x-axis is aligned with the wind direction. This makes all calculations simpler. For any given wind direction you first rotate the farm coordinates before calculating velocity deficits due to overlapping wakes. The rotation is calculated by applying a standard rotation matrix to the coordinates:
 \begin{equation}
 	\begin{pmatrix}
 	x_r \\
@@ -67,7 +65,10 @@
 	y
 	\end{pmatrix}
 \end{equation}
-where $(x,y)$ are the original coordinates of the turbines, and $(x_r,y_r)$ are the corresponding rotated coordinates.
+where $(x,y)$ are the original coordinates of the turbines, and $(x_r,y_r)$ are the corresponding rotated coordinates. When you change the wind direction the rotation should always be applied to the original coordinates and not previously rotated coordinates.
+
+The formulas below assume you are rotating the wind farm coordinates.
+
 \section{Overlapping area}
 We denote the radius of rotor as $r_2$, and the radius of wake at turbine we are looking at as $r_1$. If the distance $d$ between the center of turbine and wake is larger than $(r_1+r_2)$, i.e.,
 \begin{equation}
@@ -96,8 +97,10 @@ The last case is fairly straightforward, where the turbine is fully covered by t
 \end{equation}
 
 \section{Wake deflection due to yaw}
-\begin{framed}
-	What do we need to add here?
-\end{framed}
+In part b of the exam project you have to include wake deflection due to rotation and yaw. These effects should be excluded in part a. In this case the requirement for overlapping is now defined as
+\begin{equation}
+d = r_1+r_2+\delta_\text{rot}+\delta_\text{yaw}
+\end{equation}
+where $\delta_\text{rot}$ is the wake deflection caused by the rotating blades and $\delta_\text{yaw}$ is the wake deflection due to the yaw angle of the upwind turbine. The expressions for the two deltas are found in the master's thesis of Emil Thøgersen, the wake conference paper, and the report uploaded together with the Nysted wind farm coordinates. 
 \end{document}
  
