@@ -1,31 +1,26 @@
-\section{Forces on a 2-dimensional body (45-63)}
-
+\section{Forces on a 2-dimensional body}
 \begin{framed}
 Ideal potential flows:
 \begin{equation}
-\vec{\nabla}\cdot\vec{v}=0=\vec{\nabla}\times\vec{v}\Rightarrow\vec{\nabla}\cdot\vec{\nabla}\phi = \left(\ppdiff{}{x}+\ppdiff{}{y}\right)\phi=0
+\vec{\nabla}\cdot\vec{u}=0=\vec{\nabla}\times\vec{u}\Rightarrow\vec{\nabla}\cdot\vec{\nabla}\phi = \left(\ppdiff{}{x}+\ppdiff{}{y}\right)\phi=0
 \end{equation}
 Where is the Euler equation? Do we need it?
 \end{framed}
-
-Euler equation:
+For an ideal potential flow the Euler equation
 \begin{equation}
-\rho \left(\pdiff{\vec{v}}{t}+\left(\vec{v}\cdot\vec{\nabla}\right)\vec{v}\right) = \rho \vec{f} - \vec{\nabla}p + \mu\left(\vec{\nabla}\cdot\vec{\nabla}\right)\vec{v}
+\rho \left(\pdiff{\vec{u}}{t}+\left(\vec{u}\cdot\vec{\nabla}\right)\vec{u}\right) = \rho \vec{f} - \vec{\nabla}p + \mu\left(\vec{\nabla}\cdot\vec{\nabla}\right)\vec{u}
 \end{equation}
-
-Reduce to Bernoulli equation:
+reduces to the Bernoulli equation:
 \begin{equation}
-\vec{\nabla}\left(\frac{\rho}{2}\vec{v}^2+p\right)=0
+\vec{\nabla}\left(\frac{\rho}{2}\vec{u}^2+p\right)=0.
 \end{equation}
-
 With the Bernoulli equation (leftover from the Euler equation) we can calculate the force on the "obstacle" (\fref{fig:2dim-body}) from the surrounding flow:
-
 \begin{align}
-\vec{F} &= \int_{S(v)}(-p(\vec{r}))d\vec{A} = -\int_{S(v)}\left(p_0-\frac{\rho}{2}\vec{v}^2(\vec{r})\right)d\vec{A} \\
-&= \frac{\rho}{2}\int_{S(v)}\vec{v}^2(\vec{r})d\vec{A}\\
-&= L\vec{e}_y +\underbrace{D\vec{e}_x}_{=0}
+\vec{F} &= \int_{S(u)}(-p(\vec{r}))d\vec{A} = -\int_{S(u)}\left(p_0-\frac{\rho}{2}\vec{u}^2(\vec{r})\right)d\vec{A} \\
+&= \frac{\rho}{2}\int_{S(u)}\vec{u}^2(\vec{r})d\vec{A}\\
+&= L\vec{e}_y +\underbrace{D\vec{e}_x}_{=0}.
 \end{align}
-where $\vec{L}$ is the lift force and $\vec{D}$ is the drag force. The last term equals zero because there is no friction.
+$\vec{L}$ is the lift force and $\vec{D}$ is the drag force. The last term equals zero because there is no friction.
 
 \begin{figure}[!h]
     \centering
@@ -33,10 +28,6 @@ where $\vec{L}$ is the lift force and $\vec{D}$ is the drag force. The last term
     \caption{}
     \label{fig:2dim-body}
 \end{figure}
-
-\begin{shaded}
-I skipped page 45a and the solution of an old exam problem: pages 46, 46a-46d.
-\end{shaded}
 
 \begin{figure}[!h]
     \centering
@@ -49,7 +40,7 @@ Lift coefficient
 \begin{equation}
 C_L = \frac{L}{\frac{\rho}{2}v_\infty^2 b c}
 \end{equation}
-Drag coefficient:
+Drag coefficient (for the case that friction is non-zero):
 \begin{equation}
 C_D = \frac{D}{\frac{\rho}{2}v_\infty^2 b c}
 \end{equation}
@@ -57,13 +48,13 @@ C_D = \frac{D}{\frac{\rho}{2}v_\infty^2 b c}
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.5\textwidth]{week4/generic-lift}\\
-    \caption{}
+    \caption{Generic lift and drag coefficients vs. angle of attack. There is lift at $\alpha=0$ so the foil shape has nonzero camber. The drag increase is almost quadratic with increasing angle of attack.}
     \label{fig:generic-lift}
 \end{figure}
 
 
 \subsection{Turbine blade}
-Explain how the lift force pulls the rotor blade of a wind turbine forward. See \fref{fig:turbine-blade}.
+The lift force pulls the rotor blade of a wind turbine forward. See \fref{fig:turbine-blade}.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.6\textwidth]{week4/turbine-blade}\\
@@ -75,23 +66,23 @@ Explain how the lift force pulls the rotor blade of a wind turbine forward. See 
 \subsection[Sailing against the wind]{Sailing against the wind (KCD 14.9)}
 People have sailed without the aid of an engine for thousands of years and have known
 how to reach an upwind destination. Actually, it is not possible to sail exactly against the
-wind, but it is possible to sail at z 40e45$^\circ$ to the wind. Figure 14.29 shows how this is
-made possible by the aerodynamic lift on the sail, which is a piece of stretched and stiffened
-cloth. The wind speed is U, and the sailing speed is V, so that the apparent wind speed rela-
-tive to the boat is Ur. If the sail is properly oriented, this gives rise to a lift force perpendicular
-to Ur and a drag force parallel to Ur. The resultant force F can be resolved into a driving
+wind, but it is possible to sail at $\approx$ 40-45$^\circ$ to the wind. \fref{fig:sailing-wind} shows
+how this is made possible by the aerodynamic lift on the sail, which is a piece of stretched and stiffened
+cloth. The wind speed is U, and the sailing speed is V, so that the apparent wind speed relative
+to the boat is $U_r$. If the sail is properly oriented, this gives rise to a lift force perpendicular
+to U$_\text{r}$ and a drag force parallel to U$_\text{r}$. The resultant force F can be resolved into a driving
 component (thrust) along the motion of the boat and a lateral component. The driving
 component performs work in moving the boat; most of this work goes into overcoming
 the frictional drag and in generating the gravity waves that radiate outward from the hull.
 The lateral component does not cause much sideways drift because of the shape of the
-hull. It is clear that the thrust decreases as the angle q decreases and normally vanishes
-when $\theta$ is $\approx$ 40e45$^\circ$ . The energy for sailing comes from the wind field, which loses kinetic
+hull. It is clear that the thrust decreases as the angle $\theta$ decreases and normally vanishes
+when $\theta$ is $\approx$ 40-45$^\circ$ . The energy for sailing comes from the wind field, which loses kinetic
 energy after passing the sail.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.6\textwidth]{week4/sailing-wind}\\
-    \caption{Principle of sailing against the wind. A small component of the sail’s lift pushes the boat forward at an angle q < 90$^\circ$ to the wind. Thus by traversing a zig-zag course at angles $\pm\theta$, a sailboat can reach an upwind destination. A sailboat’s keel may make a contribution to its upwind progress too.}
+    \caption{Principle of sailing against the wind. A small component of the sail’s lift pushes the boat forward at an angle $\theta$ < 90$^\circ$ to the wind. Thus by traversing a zig-zag course at angles $\pm\theta$, a sailboat can reach an upwind destination. A sailboat’s keel may make a contribution to its upwind progress too.}
     \label{fig:sailing-wind}
 \end{figure}
 
@@ -108,21 +99,21 @@ Fluid around a cylinder can create several real flow patterns. See \fref{fig:rey
 
 \textbf{Questions:}
 \begin{enumerate}
-\item why so many different flows?
-\item what causes and characterizes them?
+\item Why so many different flows?
+\item What causes and characterizes them?
 \end{enumerate}
 Certainly friction, i.e. viscosity, will have something to do with it.
 
 \begin{align}
-0 &= \rho_0 \left[\pdiff{\vec{v}}{t}+\left(\vec{v}\cdot\vec{\nabla}\right)\vec{v}\right] + \vec{\nabla}p - \mu\Delta \vec{v} \\
-&= \rho_0\left[\frac{V}{T}\pdiff{\vec{v}'}{t'}+\frac{V^2}{L}\left(\vec{v}'\cdot\vec{\nabla}'\right)\vec{v}'\right] + \frac{\rho_0 V^2}{L}\vec{\nabla}'p'-\mu\frac{V}{L^2}\Delta'\vec{v}' \\
-&= \rho_0\frac{V^2}{L} \left\lbrace \pdiff{\vec{v}'}{t'}+\left(\vec{v}'\cdot\vec{\nabla}'\right)\vec{v}'+\vec{\nabla}'p'-\frac{\mu}{\rho_0 LV} \Delta'\vec{v}' \right\rbrace
+0 &= \rho_0 \left[\pdiff{\vec{u}}{t}+\left(\vec{u}\cdot\vec{\nabla}\right)\vec{u}\right] + \vec{\nabla}p - \mu \left(\vec{\nabla}\cdot\vec{\nabla}\right) \vec{u} \\
+&= \rho_0\left[\frac{U}{T}\pdiff{\vec{u}'}{t'}+\frac{U^2}{L}\left(\vec{u}'\cdot\vec{\nabla}'\right)\vec{u}'\right] + \frac{\rho_0 U^2}{L}\vec{\nabla}'p'-\mu\frac{U}{L^2}\left(\vec{\nabla}\cdot\vec{\nabla}\right)'\vec{u}' \\
+&= \rho_0\frac{U^2}{L} \left\lbrace \pdiff{\vec{u}'}{t'}+\left(\vec{u}'\cdot\vec{\nabla}'\right)\vec{u}'+\vec{\nabla}'p'-\frac{\mu}{\rho_0 LV} \left(\vec{\nabla}\cdot\vec{\nabla}\right)'\vec{u}' \right\rbrace
 \end{align}
-where $L$ is the characteristic length, $V$ is the characteristic velocity, $T=L/V$ is the characteristic time, and $P=\rho_0V^2$ the characteristic pressure.
+where $L$ is the characteristic length, $U$ is the characteristic velocity, $T=L/U$ is the characteristic time, and $P=\rho_0U^2$ the characteristic pressure.
 
 Reynolds number:
 \begin{equation}
-Re = \frac{\rho_0 L V}{\mu}
+Re = \frac{\rho_0 L U}{\mu}
 \end{equation}
 
 \begin{framed}
@@ -133,7 +124,7 @@ If two flows have the same geometry (object) and the same Reynolds number, but a
 
 The Reynolds number
 \begin{equation}
-Re = \frac{\rho_0 L V}{\mu} = \frac{\rho_0 V^2/L}{\mu V/L},
+Re = \frac{\rho_0 L U}{\mu} = \frac{\rho_0 U^2/L}{\mu U/L},
 \end{equation}
 is the inertia force density divided by the friction force density.
 
@@ -162,15 +153,25 @@ is the inertia force density divided by the friction force density.
     \label{fig:viscous-pipe-flow}
 \end{figure}
 
-Task: calculate velocity profile $v_z=v_z(r)$ for the viscous pipe flow.
+Task: calculate velocity profile $u_z=u_z(r)$ for the viscous pipe flow.
 
 Navier-Stokes equation
 \begin{equation}
-\rho_0\underbrace{\pdiff{\vec{v}}{t}}_{=0}+\rho_0\underbrace{\left(\vec{v}\cdot\vec{\nabla}\right)}_{=0}\vec{v} = \underbrace{f_\mathrm{ext}}_{=0}-\vec{\nabla}p+\mu\left(\vec{\nabla}\cdot\vec{\nabla}\right)\vec{v}
+\rho_0\underbrace{\pdiff{\vec{u}}{t}}_{=0}+\rho_0\underbrace{\left(\vec{u}\cdot\vec{\nabla}\right)}_{=0}\vec{u} = \underbrace{\vec{f}_\mathrm{ext}}_{=0}-\vec{\nabla}p+\mu\left(\vec{\nabla}\cdot\vec{\nabla}\right)\vec{u}
 \end{equation}
-
+The second term on the left-hand side vanishes because of the incompressibility condition
+\begin{equation}
+0=\vec{\nabla}\cdot\vec{u}=\partial_xu_x+\partial_yu_y+\partial_zu_z = \partial_zu_z
+\end{equation}
+with $u_x=u_y=0$ and
+\begin{equation}
+\left(\vec{u}\cdot\vec{\nabla}\right)\vec{u} = u_z\partial_z
+\begin{pmatrix}
+0\\0\\u_z
+\end{pmatrix} = 0.
+\end{equation}
 \begin{align}
-0 &= -\vec{\nabla}p + \mu\left(\ppdiff{}{x}+\ppdiff{}{y}\right)v_z\vec{e}_z\\
+\vec{\nabla}p = \mu\left(\ppdiff{}{x}+\ppdiff{}{y}\right)u_z\vec{e}_z\\
 \leadsto
 \left(\vec{\nabla}p\right)_x &= \left(\vec{\nabla}p\right)_y = 0 \\
 \leadsto
@@ -178,7 +179,7 @@ p &= p(z)
 \end{align}
 
 \begin{align}
-\mu\Delta v_z(r) &= \frac{\mu}{r}\pdiff{}{r}\left(r\pdiff{v_z(r)}{r}\right) \\
+\mu\left(\vec{\nabla}\cdot\vec{\nabla}\right) v_z(r) &= \frac{\mu}{r}\pdiff{}{r}\left(r\pdiff{u_z(r)}{r}\right) \\
 &= \pdiff{p(z)}{z} \require \mathrm{constant}
 \end{align}
 
@@ -269,7 +270,7 @@ In the following we determine $\delta = \delta(x)$ (\fref{fig:laminar-boundary})
 
 Incompressible flow:
 \begin{align}
-\vec{\nabla}\cdot\vec{v} &= \pdiff{v_x}{x} + \pdiff{v_y}{y} = 0 \\
+\vec{\nabla}\cdot\vec{u} &= \pdiff{v_x}{x} + \pdiff{v_y}{y} = 0 \\
 &= \mathcal{O} \left(\frac{v_\infty}{L}\right) + \mathcal{O} \left(\frac{v_y}{\delta}\right) \\
 \leadsto
 \mathcal{O}(v_y) &= \delta\frac{v_\infty}{L} = \frac{\delta}{L}v_\infty
@@ -286,7 +287,7 @@ v_x\pdiff{v_x}{x} + v_y\pdiff{v_x}{y} = -\frac{1}{\rho_0}\pdiff{p}{x} + \frac{\m
 \begin{equation}
 \left(\frac{\delta}{L}\right)^2 \sim \frac{\mu}{\rho_0 L v_\infty} = \frac{1}{Re}
 \end{equation}
-The larger the Reynolds number, the thinner the boundary layer. This holds for $Re \leq \SI{1e5}{}-\SI{1e6}{}$, above that the boundary layer becomes turbulent, and is no longer laminar. 
+The larger the Reynolds number, the thinner the boundary layer. This holds for $Re \leq \SI{1e5}{}-\SI{1e6}{}$, above that the boundary layer becomes turbulent, and is no longer laminar.
 
 \begin{equation}
 \delta(x) \sim \sqrt{\frac{\mu x}{\rho_0 v_\infty}}
@@ -479,7 +480,7 @@ In case of separation the lift decreases, which can lead to airplane crash. It w
 Engineer's dream: construct airfoils without turbulent wake to mimic shark skin or fish scales.
 \end{framed}
 
-\subsection{Solution of Prandtl equations for free boundary layers (66-71)} 
+\subsection{Solution of Prandtl equations for free boundary layers (66-71)}
 
 \fref{fig:2d-laminar-jet} shows a 2-dimensional laminar jet flow generated from a flow through a long slit streaming into a resting fluid.
 
