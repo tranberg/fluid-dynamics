@@ -25,14 +25,14 @@ $\vec{L}$ is the lift force and $\vec{D}$ is the drag force. The last term equal
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.5\textwidth]{week4/2dim-body}\\
-    \caption{}
+    \caption{Lift and drag forces.}
     \label{fig:2dim-body}
 \end{figure}
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.4\textwidth]{week4/generic-lift2}\\
-    \caption{}
+    \caption{Angle of attack.}
     \label{fig:generic-lift2}
 \end{figure}
 
@@ -58,7 +58,7 @@ The lift force pulls the rotor blade of a wind turbine forward. See \fref{fig:tu
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.6\textwidth]{week4/turbine-blade}\\
-    \caption{}
+    \caption{Lift and drag forces on the rotor blade of a wind turbine.}
     \label{fig:turbine-blade}
 \end{figure}
 
@@ -93,7 +93,7 @@ Fluid around a cylinder can create several real flow patterns. See \fref{fig:rey
 \begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{week4/reynolds-cylinder}\\
-    \caption{}
+    \caption{Flow around a cylinder. From laminar to turbulent with increasing velocity.}
     \label{fig:reynolds-cylinder}
 \end{figure}
 
@@ -131,14 +131,14 @@ is the inertia force density divided by the friction force density.
 \begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{week4/reynolds-numbers}\\
-    \caption{This should be presented in text in a better way.}
+    \caption{Extreme examples of Reynolds number.}
     \label{fig:reynolds-numbers}
 \end{figure}
 
 \begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{week4/schematic-flows}\\
-    \caption{}
+    \caption{Schematic real flow patterns around a cylinder with different Reynolds numbers.}
     \label{fig:schematic-flows}
 \end{figure}
 
@@ -149,7 +149,7 @@ is the inertia force density divided by the friction force density.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{week4/viscous-pipe-flow}\\
-    \caption{}
+    \caption{Ideal and viscous pipe flow.}
     \label{fig:viscous-pipe-flow}
 \end{figure}
 
@@ -179,12 +179,12 @@ p &= p(z)
 \end{align}
 
 \begin{align}
-\mu\left(\vec{\nabla}\cdot\vec{\nabla}\right) v_z(r) &= \frac{\mu}{r}\pdiff{}{r}\left(r\pdiff{u_z(r)}{r}\right) \\
+\mu\left(\partial_x^2+\partial_y^2\right) v_z(r) &= \frac{\mu}{r}\pdiff{}{r}\left(r\pdiff{u_z(r)}{r}\right) \\
 &= \pdiff{p(z)}{z} \require \mathrm{constant}
 \end{align}
 
 \begin{align}
-\pdiff{p(z)}{t}&=c \\
+\pdiff{p(z)}{z}&=c \\
 \leadsto
 p(z) &= cz+d \\
 &= \frac{p(z=L)-p(z=0)}{L}z+p(z=0)\\
@@ -192,18 +192,20 @@ p(z) &= cz+d \\
 \end{align}
 
 \begin{align}
-\frac{\mu}{r}\pdiff{}{r}\left(r\pdiff{v_z(r)}{r}\right) &= c = -\frac{\Delta p}{L} \\
+\frac{\mu}{r}\pdiff{}{r}\left(r\pdiff{u_z(r)}{r}\right) &= c = -\frac{\Delta p}{L} \\
 \leadsto
-r\pdiff{v_z(r)}{r} &= -\frac{\Delta p}{\mu L}\frac{r^2}{2} + D_1 \\
+r\pdiff{u_z(r)}{r} &= -\frac{\Delta p}{\mu L}\frac{r^2}{2} + D_1 \\
 \leadsto
-v_z(r) &= -\frac{\Delta p}{4\mu L}r^2 + D_1 \ln r + D_ 2 \\
-\leadsto
-v_z(r) &= \frac{\Delta p}{4\mu L}\left( R^2 - r^2\right)
+u_z(r) &= -\frac{\Delta p}{4\mu L}r^2 + D_1 \ln r + D_ 2 \\
 \end{align}
+$D_1$ and $D_2$ are determined from the boudnary conditions $u_z(r=R)=0$ (no slip condition) and $|u_z(r=0)|<\infty$ (finiteness).
+\begin{equation}
+u_z(r) = \frac{\Delta p}{4\mu L}\left( R^2 - r^2\right)
+\end{equation}
 
 Fluid mass per time passing through pipe cross-section:
 \begin{equation}
-\diff{M}{t} = \int_0^R\rho_0 v_z(r)2\pi r dr = \frac{\pi\rho_0 R^4\Delta p}{8\mu L}
+\diff{M}{t} = \int_0^R\rho_0 u_z(r)2\pi r dr = \frac{\pi\rho_0 R^4\Delta p}{8\mu L}
 \end{equation}
 This is the Hagen-Poiseuille law.
 \begin{framed}
@@ -217,9 +219,9 @@ This is the Hagen-Poiseuille law.
 \textbf{Remark:} "Ohm's Law"
 
 \begin{align}
-\Delta p = \Delta u \ &,\quad \diff{M}{t} = I\\
+\Delta p = \Delta U \ &,\quad \diff{M}{t} = I\\
 \leadsto
-I &= \frac{\pi\rho_0 R^4}{8L\mu}
+I &= \frac{\pi\rho_0 R^4}{8L\mu} \Delta U
 \end{align}
 
 {\center
@@ -231,11 +233,10 @@ R = R_0\cdot f(Re)
 \end{equation}
 with
 \begin{equation}
-f(Re\rightarrow0)=1
+f(Re\rightarrow0)=1.
 \end{equation}
-we conclude that turbulence increases pipe resistance. This is important for the operation of oil and gas pipelines.
+Turbulence increases pipe resistance. This is important for the operation of oil and gas pipelines.
 \end{framed}
-
 
 
 
@@ -245,7 +246,7 @@ we conclude that turbulence increases pipe resistance. This is important for the
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{week4/boundary-layers}\\
-    \caption{}
+    \caption{Example of boundary layer for flow around a cylinder.}
     \label{fig:boundary-layers}
 \end{figure}
 
@@ -262,7 +263,7 @@ Derivation of the (laminar) boundary layer equations. Approximation to the Navie
 \begin{figure}[ht]
     \centering
     \includegraphics[width=.7\textwidth]{week4/laminar-boundary}\\
-    \caption{}
+    \caption{Laminar boundary layer.}
     \label{fig:laminar-boundary}
 \end{figure}
 
@@ -270,45 +271,46 @@ In the following we determine $\delta = \delta(x)$ (\fref{fig:laminar-boundary})
 
 Incompressible flow:
 \begin{align}
-\vec{\nabla}\cdot\vec{u} &= \pdiff{v_x}{x} + \pdiff{v_y}{y} = 0 \\
-&= \mathcal{O} \left(\frac{v_\infty}{L}\right) + \mathcal{O} \left(\frac{v_y}{\delta}\right) \\
+\vec{\nabla}\cdot\vec{u} = \pdiff{u_x}{x} + \pdiff{u_y}{y} &= 0 \\
 \leadsto
-\mathcal{O}(v_y) &= \delta\frac{v_\infty}{L} = \frac{\delta}{L}v_\infty
+\mathcal{O} \left(\frac{u_\infty}{L}\right) + \mathcal{O} \left(\frac{u_y}{\delta}\right) &= 0\\
+\leadsto
+\mathcal{O}(u_y) &= \delta\frac{u_\infty}{L} = \frac{\delta}{L}u_\infty
 \end{align}
 
 Navier-Stokes equation (x-component):
 \begin{equation}
-v_x\pdiff{v_x}{x} + v_y\pdiff{v_x}{y} = -\frac{1}{\rho_0}\pdiff{p}{x} + \frac{\mu}{\rho_0}\ppdiff{v_x}{x} + \frac{\mu}{\rho_0}\ppdiff{v_x}{y}
+u_x\pdiff{u_x}{x} + u_y\pdiff{u_x}{y} = -\frac{1}{\rho_0}\pdiff{p}{x} + \frac{\mu}{\rho_0}\ppdiff{u_x}{x} + \frac{\mu}{\rho_0}\ppdiff{u_x}{y}
 \end{equation}
 \begin{equation}
-\mathcal{O} \left(\frac{v_\infty^2}{L}\right) \require \mathcal{O} \left(\frac{\mu}{\rho_0}\frac{v_\infty}{\delta^2}\right)
+\mathcal{O} \left(\frac{u_\infty^2}{L}\right) \require \mathcal{O} \left(\frac{\mu}{\rho_0}\frac{u_\infty}{\delta^2}\right)
 \end{equation}
 
 \begin{equation}
-\left(\frac{\delta}{L}\right)^2 \sim \frac{\mu}{\rho_0 L v_\infty} = \frac{1}{Re}
+\left(\frac{\delta}{L}\right)^2 \sim \frac{\mu}{\rho_0 L u_\infty} = \frac{1}{Re}
 \end{equation}
 The larger the Reynolds number, the thinner the boundary layer. This holds for $Re \leq \SI{1e5}{}-\SI{1e6}{}$, above that the boundary layer becomes turbulent, and is no longer laminar.
 
 \begin{equation}
-\delta(x) \sim \sqrt{\frac{\mu x}{\rho_0 v_\infty}}
+\delta(x) \sim \sqrt{\frac{\mu x}{\rho_0 u_\infty}}
 \end{equation}
-
 
 Navier-Stokes equation (y-component):
 \begin{equation}
-v_x\pdiff{v_y}{x} + v_y\pdiff{v_y}{y} = -\frac{1}{\rho_0}\pdiff{p}{y} + \frac{\mu}{\rho_0}\ppdiff{v_y}{x} + \frac{\mu}{\rho_0}\ppdiff{v_y}{y}
+u_x\pdiff{u_y}{x} + u_y\pdiff{u_y}{y} = -\frac{1}{\rho_0}\pdiff{p}{y} + \frac{\mu}{\rho_0}\ppdiff{u_y}{x} + \frac{\mu}{\rho_0}\ppdiff{u_y}{y}
 \end{equation}
-
+Ther first term on the right-hand side is the only large term. All other terms are neglected, which leads to
 \begin{equation}
 \pdiff{p}{y} = 0 \Rightarrow p = p(x)
 \end{equation}
 
-
+\begin{framed}
 \textbf{Prandtl equations:} laminar boundary layer equations
 \begin{align}
-v_x\pdiff{v_x}{x}+v_y\pdiff{v_x}{y} &= -\frac{1}{\rho_0}\pdiff{p(x)}{x}+\frac{\mu}{\rho_0}\ppdiff{v_x}{y} \\
-\pdiff{v_x}{x}+\pdiff{v_y}{y}&=0
+u_x\pdiff{u_x}{x}+u_y\pdiff{u_x}{y} &= -\frac{1}{\rho_0}\pdiff{p(x)}{x}+\frac{\mu}{\rho_0}\ppdiff{u_x}{y} \\
+\pdiff{u_x}{x}+\pdiff{u_y}{y}&=0
 \end{align}
+\end{framed}
 
 \textbf{Example:} Solution of Prandtl equations for laminar boundary flow around semi-infinite plate
 
@@ -318,103 +320,103 @@ p=p(x) \Rightarrow p(x)|_\mathrm{inside} = p(x)|_\mathrm{outside}
 
 Outside boundary layer:
 \begin{align}
-v_x|_\mathrm{outside} &= v_x = v_\infty = \mathrm{constant} \\
-v_y|_\mathrm{outside} &= 0
+u_x|_\mathrm{outside} &= u_x = u_\infty = \mathrm{constant} \\
+u_y|_\mathrm{outside} &= 0
 \end{align}
 
 Bernoulli equation:
 \begin{align}
-p(x) + \frac{\rho_0}{2}v_x^2 &= \mathrm{constant}\\
+p(x) + \frac{\rho_0}{2}u_x^2 &= \mathrm{constant}\\
 \leadsto
 p(x) &= \mathrm{constant} \\
 \leadsto
 \pdiff{p(x)}{x} &= 0
 \end{align}
+Prandtl equations inside boundary layer:
+\begin{align}
+u_x\partial_xu_x+u_y\partial_yu_y &= \frac{\mu}{\rho_0}\partial_y^2u_x\\
+\partial_xu_x+\partial_yu_y &= 0
+\end{align}
 
-Similarity ansatz:
+\textbf{Solution:} similarity ansatz.
 \begin{equation}
-v_x(x,y) = v_\infty g\left(\frac{y}{\delta(x)}\right)
+u_x(x,y) = u_\infty g\left(\frac{y}{\delta(x)}\right)
 \end{equation}
-Except for a rescaling with $\delta(x)$ the velocity $v_x(x,y)$ looks like the same for all $x$.
+Except for a rescaling with $\delta(x)$ the velocity $u_x(x,y)$ looks like the same for all $x$.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=.7\textwidth]{week4/boundary-ansatz}\\
-    \caption{}
+    \caption{Similarity ansatz for the laminar boundary layer.}
     \label{fig:boundary-ansatz}
 \end{figure}
 
 
-\noindent\makebox[\linewidth]{\rule{\textwidth}{0.5pt}}
-
 \textbf{Question:} does the similarity ansatz work?
-
 \begin{align}
-\pdiff{v_x}{x}+\pdiff{v_y}{y} &= 0 \\
+\pdiff{u_x}{x}+\pdiff{u_y}{y} &= 0 \\
 \leadsto
-v_x = \pdiff{\psi}{y} \ &, \quad v_y = -\pdiff{\psi}{x}
+u_x = \pdiff{\psi}{y} \ &, \quad u_y = -\pdiff{\psi}{x}
 \end{align}
 
 \begin{equation}
-\psi(x,y) = v_\infty\delta(x)f\left(\frac{y}{\delta(x)}\right)
+\psi(x,y) = u_\infty\delta(x)f\left(\frac{y}{\delta(x)}\right)
 \end{equation}
 
 \begin{align}
-v_x=\pdiff{\psi}{y} &= v_\infty\delta(x)\diff{f(z}{z}\diff{z}{y} \\
-&= v_\infty \delta(x) \diff{f(z)}{z}\frac{1}{\delta(x)}\\
-&= v_\infty \diff{f(z)}{z} \\
-&\require v_\infty g(z)
+u_x=\pdiff{\psi}{y} &= u_\infty\delta(x)\diff{f(z)}{z}\diff{z}{y} \\
+&= u_\infty \delta(x) \diff{f(z)}{z}\frac{1}{\delta(x)}\\
+&= u_\infty \diff{f(z)}{z} \\
+&\require u_\infty g(z)
 \end{align}
 
 \begin{equation}
 f' = \diff{f(z)}{z}g(z)
 \end{equation}
 
-\noindent\makebox[\linewidth]{\rule{\textwidth}{0.5pt}}
-
 \begin{align}
-v_y &= -\pdiff{\psi}{x} \\
-&=  -v_\infty\diff{\delta(x)}{x}f(z) - v_\infty \delta(x)\diff{f(z)}{z}\diff{z}{x}\\
-&= v_\infty \left[-f + \frac{y f'}{\delta}\right] \diff{\delta(x)}{x}
+u_y &= -\pdiff{\psi}{x} \\
+&=  -u_\infty\diff{\delta(x)}{x}f(z) - u_\infty \delta(x)\diff{f(z)}{z}\diff{z}{x}\\
+&= u_\infty \left[-f + \frac{y f'}{\delta}\right] \diff{\delta(x)}{x}
 \end{align}
 
 \begin{align}
-\pdiff{v_x}{x} &= \left(v_\infty f''\right)\left(\frac{-y}{\delta^2}\right)\diff{\delta(x)}{x} = -\frac{v_\infty y f''}{\delta^2}\diff{\delta(x)}{x} \\
-\pdiff{v_x}{y} &= (v_\infty f'') \frac{1}{\delta} = \frac{v_\infty f''}{\delta} \\
-\pdiff{v_x}{y} &= \frac{v_\infty f''}{\delta^2}
+\pdiff{u_x}{x} &= \left(u_\infty f''\right)\left(\frac{-y}{\delta^2}\right)\diff{\delta(x)}{x} = -\frac{u_\infty y f''}{\delta^2}\diff{\delta(x)}{x} \\
+\pdiff{u_x}{y} &= (u_\infty f'') \frac{1}{\delta} = \frac{u_\infty f''}{\delta} \\
+\pdiff{u_x}{y} &= \frac{u_\infty f''}{\delta^2}
 \end{align}
 
 \begin{align}
 \begin{split}
-v_x\pdiff{v_x}{x} + v_y\pdiff{v_x}{y} - \frac{\mu}{\rho_0}\ppdiff{v_x}{y} &=
--(v_\infty f') \left(\frac{v_\infty y f''}{\delta^2} \diff{\delta(x)}{x}\right) \\
-&\hspace{5mm} + \left(v_\infty\left[-f\frac{yf'}{\delta}\right]\diff{\delta(x)}{x}\right) \left(\frac{v_\infty f''}{\delta}\right) \\
-&\hspace{5mm} -\frac{\mu}{\rho_0} \left(\frac{v_\infty f''}{\delta^2}\right)
+u_x\pdiff{u_x}{x} + u_y\pdiff{u_x}{y} - \frac{\mu}{\rho_0}\ppdiff{u_x}{y} &=
+-(u_\infty f') \left(\frac{u_\infty y f''}{\delta^2} \diff{\delta(x)}{x}\right) \\
+&\hspace{5mm} + \left(u_\infty\left[-f+\frac{yf'}{\delta}\right]\diff{\delta(x)}{x}\right) \left(\frac{u_\infty f''}{\delta}\right) \\
+&\hspace{5mm} -\frac{\mu}{\rho_0} \left(\frac{u_\infty f''}{\delta^2}\right)
 \end{split} \\
-&= -\frac{v_\infty^2}{\delta}\diff{\delta}{x} ff'' - \frac{\mu}{\rho_0} \frac{v_\infty}{\delta^2}f'''\\
+&= -\frac{u_\infty^2}{\delta}\diff{\delta}{x} ff'' - \frac{\mu}{\rho_0} \frac{u_\infty}{\delta^2}f'''\\
 &= 0
 \end{align}
 
 \begin{equation}
-\frac{\rho_0 v_\infty}{\mu} \delta(x) \diff{\delta(x)}{x} = -\frac{f'''(z)}{f(z)f''(z)} \require c_1^2
+\frac{\rho_0 u_\infty}{\mu} \delta(x) \diff{\delta(x)}{x} = -\frac{f'''(z)}{f(z)f''(z)} \require c_1^2
 \end{equation}
 
 \begin{equation}
-\delta\diff{\delta}{x} = \frac{1}{2}\diff{\delta^2}{x} = c_1^2\frac{\mu}{\rho_0v_\infty}\\
+\delta\diff{\delta}{x} = \frac{1}{2}\diff{\delta^2}{x} = c_1^2\frac{\mu}{\rho_0u_\infty}\\
 \end{equation}
 
 \begin{equation}
-\delta^2 = 2c_1^2 \frac{\mu}{\rho_0v_\infty}x + c_2
+\delta^2 = 2c_1^2 \frac{\mu}{\rho_0u_\infty}x + c_2
 \end{equation}
 $c_2=0$ since $\delta(x=0)=0$.
 
 \begin{equation}
-\delta(x) = c_1\sqrt{\frac{2\mu}{\rho_0v_\infty}x}
+\delta(x) = c_1\sqrt{\frac{2\mu}{\rho_0u_\infty}x}
 \end{equation}
 
 \begin{equation}
-\delta(x)=\sqrt{\frac{\mu}{\rho_0v_\infty}x}
+\delta(x)=\sqrt{\frac{\mu}{\rho_0u_\infty}x}
 \end{equation}
-$c_1=\frac{1}{\sqrt{2}}$. Freedom of choice because of arbitrary definition of $\delta$; for example, $v_x(y=\delta)=0.99v_\infty$ or $v_x(x=\delta)=0.95v_\infty$.
+Freedom of choice $c_1=\frac{1}{\sqrt{2}}$ because of arbitrary definition of $\delta$; for example, $u_x(y=\delta)=0.99u_\infty$ or $u_x(x=\delta)=0.95u_\infty$.
 
 This is the same result as the order of magnitude calculation when we calculated the x-component of the Navier-stokes equation earlier in this section.
 
@@ -425,11 +427,22 @@ f'''(z) +\frac{1}{2} f(z)f''(z) = 0
 \begin{equation}
 f(z)\ddiff{f(z)}{z}+2\dddiff{f(z)}{z}=0
 \end{equation}
-This is Blasius' equation. A special case of the more general Falker-Skan equation.
+This is Blasius' equation. It is a special case of the more general Falker-Skan equation. The Blasius equation can only be solved numerically. The boundary conditions for the solutions are:
+\begin{align}
+u_x(y=0)=0&\Rightarrow f'(0)=0, \\
+u_y(y=0)=0&\Rightarrow f(0)=0, \\
+u_x(y=\infty)=u_\infty&\Rightarrow f'(\infty)=1.
+\end{align}
+The solution is sketched in \fref{fig:blasius}.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=.8\textwidth]{week4/blasius}\\
+    \caption{Solution to the Blasius equation.}
+    \label{fig:blasius}
+\end{figure}
 
 
-\subsection{Separation of boundary layers (64-65)}
-
+\subsection{Separation of boundary layers}
 Boundary condition at the wall:
 \begin{equation}
 v_x(x,y=0) = v_y(x,y=0)=0
@@ -447,14 +460,14 @@ If we are very close to the wall, the two terms on the left side equal zero. We 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.9\textwidth]{week5/wall-boundary}\\
-    \caption{}
+    \caption{Shape of the boundary layer for different pressure profiles.}
     \label{fig:wall-boundary}
 \end{figure}
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.5\textwidth]{week5/detachment-point}\\
-    \caption{}
+    \caption{Detachment point of the boundary layer.}
     \label{fig:detachment-point}
 \end{figure}
 
@@ -464,30 +477,29 @@ If we are very close to the wall, the two terms on the left side equal zero. We 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.8\textwidth]{week5/cylinder-flow}\\
-    \caption{}
+    \caption{Separation of boundary layer and detachment point for flow around a cylinder.}
     \label{fig:cylinder-flow}
 \end{figure}
 
 The detachment point is at the separation of the boundary layer. When $v\approx0$ there is no kinetic energy to run against the pressure gradient.
 
 \begin{framed}
-\textbf{Remark:} separation of boudnary layers is a big issue in mechanical engineering; for example: design of airfoils, wind-turbine blades etc.
+\textbf{Remark:} separation of boundary layers is a big issue in mechanical engineering; for example: design of airfoils, wind-turbine blades etc.
 {\center
 \includegraphics[width=.4\textwidth]{week5/detachment-eddies}\\
 }
 In case of separation the lift decreases, which can lead to airplane crash. It would also lead to a substantial rise in the overall drag (more friction). This would require more engine power and therefore more fuel for an airplane. For a wind turbine it would means less power generation.
 
-Engineer's dream: construct airfoils without turbulent wake to mimic shark skin or fish scales.
+Engineer's dream: construct airfoils without turbulent wake, with e.g. shark skin or fish scales.
 \end{framed}
 
-\subsection{Solution of Prandtl equations for free boundary layers (66-71)}
 
+\subsection{Solution of Prandtl equations for free boundary layers}
 \fref{fig:2d-laminar-jet} shows a 2-dimensional laminar jet flow generated from a flow through a long slit streaming into a resting fluid.
-
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.6\textwidth]{week5/2d-laminar-jet}\\
-    \caption{}
+    \caption{2-dimensional laminar jet flow.}
     \label{fig:2d-laminar-jet}
 \end{figure}
 
@@ -515,20 +527,20 @@ v_y=-\pdiff{\psi}{x}=-v'_\mathrm{max}\delta f-v_\mathrm{max}\delta'f-v_\mathrm{m
 \begin{align}
 \partial_xv_x &= v'_\mathrm{max}f'+v_\mathrm{max}f''\frac{(-y)\delta'}{\delta^2} \\
 \partial_yv_x &= v_\mathrm{max} f''\frac{1}{\delta}\\
-\partial^2_xv_x &= \frac{v_\mathrm{max}}{\delta^2}f'''
+\partial^2_yv_x &= \frac{v_\mathrm{max}}{\delta^2}f'''
 \end{align}
-
+Insertion into Prandtl's equation with $p(x)=\text{constant}$:
 \begin{align}
 \begin{split}
 v_x\partial_x v_x+v_y\partial_yv_x-\frac{\mu}{\rho_0}\partial^2_yv_x &= v_\mathrm{max}f'\left\lbrace v'_\mathrm{max}f' - v_\mathrm{max}\frac{y\delta'}{\delta^2}f''\right\rbrace \\
-&\hspace{5mm}-\left\lbrace v'_\mathrm{max}\delta f + v_\mathrm{max}d'f-v_\mathrm{max}\frac{y\delta'}{\delta}f'\right\rbrace v_\mathrm{max}\frac{1}{\delta}f'' \\
+&\hspace{5mm}-\left\lbrace v'_\mathrm{max}\delta f + v_\mathrm{max}\delta'f-v_\mathrm{max}\frac{y\delta'}{\delta}f'\right\rbrace v_\mathrm{max}\frac{1}{\delta}f'' \\
 &\hspace{5mm}-\frac{\mu}{\rho_0^2} \frac{v_\mathrm{max}}{\delta^2}f'''
 \end{split}\\
 \begin{split}
 &= v_\mathrm{max}v'_\mathrm{max}f'^2-v_\mathrm{max}v'_\mathrm{max}ff''-v_\mathrm{max}^2\frac{\delta'}{\delta}ff'' \\
 &\hspace{5mm}-\frac{\mu}{\rho_0}\frac{v_\mathrm{max}}{\delta^2}f'''\label{eq:free-boundary}
 \end{split} \\
-&\require0
+&\require0 \label{eq:prandtl}
 \end{align}
 All four terms in \eqref{eq:free-boundary} have the form $\alpha_i(x)\beta_i(x)$ for $(i=1,...,4)$. The sum of these four terms has to be zero. This means that $\alpha_1(x)\sim\alpha_2(x)\sim\alpha_3(x)\sim\alpha_4(x)$.
 
@@ -547,13 +559,15 @@ Sum of the 4 terms:
 c_1^2mx^{2m-1}(f'^2-ff'')-c_1^2x^{2m}\frac{n}{x}ff'' - \frac{\mu}{\rho_0}\frac{c_1}{c_2^2}\frac{x^m}{x^{2n}}f'''=0
 \end{equation}
 
+\begin{framed}
 \begin{equation}
 2m-1 = m-2n
 \end{equation}
-
 \begin{equation}
-m(f'^2-ff'')nff''-\frac{\mu}{\rho_0}\frac{1}{c_1c_2^2}f'''=0
+m(f'^2-ff'')-nff''-\frac{\mu}{\rho_0}\frac{1}{c_1c_2^2}f'''=0
 \end{equation}
+\end{framed}
+
 This differential equation determines the velocity profile
 \begin{equation}
 g\left(\frac{y}{\delta(x)}\right)=f'\left(\frac{y}{\delta(x)}\right)
@@ -565,7 +579,7 @@ Momentum flux through the red plane in \fref{fig:momentum-flux} is identical to 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.4\textwidth]{week5/momentum-flux}\\
-    \caption{}
+    \caption{Momentum flux for 2-dimensional laminar jet flow.}
     \label{fig:momentum-flux}
 \end{figure}
 
@@ -579,7 +593,7 @@ Momentum flux:
 \frac{\mathrm{momentum}}{\Delta A \Delta t} = \rho_0 v_x^2
 \end{equation}
 
-\noindent\makebox[\linewidth]{\rule{\textwidth}{0.5pt}}
+\begin{framed}
 \textbf{Proof of conservation of momentum flux}
 
 If
@@ -592,14 +606,14 @@ then
 \end{equation}
 
 \begin{align}
-\diff{}{x}\int_{-\infty}^\infty \rho_0v_x^2(x)dy &= 2\rho_0\int_
-{-\infty}^\infty\left(v_x\pdiff{v_x}{x}\right)dy \\
-&= 2\mu\pdiff{v_x}{y}\biggm\vert_{-\infty}^\infty-2\rho_0\int_{-\infty}^\infty v_y\pdiff{v_x}{y}dy \\
-&=-2\rho_0v_xv_y\biggm\vert_{-\infty}^\infty + 2\rho_0 \int_{-\infty}^\infty\pdiff{v_y}{y}dy \\
-&= -2\rho_0\int_{-\infty}^\infty v_x\pdiff{v_x}{x}dy\\
+\diff{}{x}\int_{-\infty}^\infty \rho_0v_x^2(x)dy &= 2\rho_0\int_{-\infty}^\infty\left(v_x\pdiff{v_x}{x}\right)dy \label{eq:a}\\
+&= 2\mu\pdiff{v_x}{y}\biggm\vert_{-\infty}^\infty-2\rho_0\int_{-\infty}^\infty v_y\pdiff{v_x}{y}dy \label{eq:b}\\
+&=-2\rho_0v_xv_y\biggm\vert_{-\infty}^\infty + 2\rho_0 \int_{-\infty}^\infty\pdiff{v_y}{y}dy \label{eq:c}\\
+&= -2\rho_0\int_{-\infty}^\infty v_x\pdiff{v_x}{x}dy \label{eq:d}\\
 &= 0
 \end{align}
-\noindent\makebox[\linewidth]{\rule{\textwidth}{0.5pt}}
+Prandtl's equation \eqref{eq:prandtl} has been inserted into \eqref{eq:a} to obtain \eqref{eq:b}. The first term in \eqref{eq:b} is zero because $v_x(y)=\text{constant}$ for $y\rightarrow\pm\infty$. Partial integration has been used to arrive at \eqref{eq:c}. The incompressibility condition $\partial_xv_x+\partial_yv_y$ has been used to get \eqref{eq:d}. Since \eqref{eq:d} is equal to \eqref{eq:a} the integral has to be zero.
+\end{framed}
 
 \begin{align}
 \int_{-\infty}^\infty\rho_0v_x^2dy &= \rho_0\int_{-\infty}^\infty v_\mathrm{max}^2(x)g^2\left(\frac{y}{\delta(x)}\right)dy\\
@@ -610,7 +624,7 @@ then
 \begin{align}
 v_\mathrm{max}^2(x)\delta(x)&=\mathrm{constant}\\
 c_1^2x^{2m}c_2x^n &= \mathrm{constant}\\
-2m+n&0
+2m+n &= 0
 \end{align}
 
 \begin{align}
