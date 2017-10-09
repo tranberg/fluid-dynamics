@@ -445,7 +445,7 @@ The solution is sketched in \fref{fig:blasius}.
 \subsection{Separation of boundary layers}
 Boundary condition at the wall:
 \begin{equation}
-v_x(x,y=0) = u_y(x,y=0)=0
+u_x(x,y=0) = u_y(x,y=0)=0
 \end{equation}
 
 Prandtl equation (with pressure)
@@ -521,23 +521,23 @@ u_x(x,y)=u_\mathrm{max}(x)g\left(\frac{y}{\delta(x)}\right)
 \end{equation}
 
 \begin{equation}
-u_y=-\pdiff{\psi}{x}=-v'_\mathrm{max}\delta f-u_\mathrm{max}\delta'f-u_\mathrm{max}\delta f'\frac{(-y)\delta'}{\delta^2}
+u_y=-\pdiff{\psi}{x}=-u'_\mathrm{max}\delta f-u_\mathrm{max}\delta'f-u_\mathrm{max}\delta f'\frac{(-y)\delta'}{\delta^2}
 \end{equation}
 
 \begin{align}
-\partial_xu_x &= v'_\mathrm{max}f'+u_\mathrm{max}f''\frac{(-y)\delta'}{\delta^2} \\
+\partial_xu_x &= u'_\mathrm{max}f'+u_\mathrm{max}f''\frac{(-y)\delta'}{\delta^2} \\
 \partial_yu_x &= u_\mathrm{max} f''\frac{1}{\delta}\\
 \partial^2_yu_x &= \frac{u_\mathrm{max}}{\delta^2}f'''
 \end{align}
 Insertion into Prandtl's equation with $p(x)=\text{constant}$:
 \begin{align}
 \begin{split}
-u_x\partial_x u_x+u_y\partial_yu_x-\frac{\mu}{\rho_0}\partial^2_yu_x &= u_\mathrm{max}f'\left\lbrace v'_\mathrm{max}f' - u_\mathrm{max}\frac{y\delta'}{\delta^2}f''\right\rbrace \\
-&\hspace{5mm}-\left\lbrace v'_\mathrm{max}\delta f + u_\mathrm{max}\delta'f-u_\mathrm{max}\frac{y\delta'}{\delta}f'\right\rbrace u_\mathrm{max}\frac{1}{\delta}f'' \\
+u_x\partial_x u_x+u_y\partial_yu_x-\frac{\mu}{\rho_0}\partial^2_yu_x &= u_\mathrm{max}f'\left\lbrace u'_\mathrm{max}f' - u_\mathrm{max}\frac{y\delta'}{\delta^2}f''\right\rbrace \\
+&\hspace{5mm}-\left\lbrace u'_\mathrm{max}\delta f + u_\mathrm{max}\delta'f-u_\mathrm{max}\frac{y\delta'}{\delta}f'\right\rbrace u_\mathrm{max}\frac{1}{\delta}f'' \\
 &\hspace{5mm}-\frac{\mu}{\rho_0^2} \frac{u_\mathrm{max}}{\delta^2}f'''
 \end{split}\\
 \begin{split}
-&= u_\mathrm{max}v'_\mathrm{max}f'^2-u_\mathrm{max}v'_\mathrm{max}ff''-u_\mathrm{max}^2\frac{\delta'}{\delta}ff'' \\
+&= u_\mathrm{max}u'_\mathrm{max}f'^2-u_\mathrm{max}u'_\mathrm{max}ff''-u_\mathrm{max}^2\frac{\delta'}{\delta}ff'' \\
 &\hspace{5mm}-\frac{\mu}{\rho_0}\frac{u_\mathrm{max}}{\delta^2}f'''\label{eq:free-boundary}
 \end{split} \\
 &\require0 \label{eq:prandtl}
