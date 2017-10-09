@@ -16,8 +16,8 @@ reduces to the Bernoulli equation:
 \end{equation}
 With the Bernoulli equation (leftover from the Euler equation) we can calculate the force on the "obstacle" (\fref{fig:2dim-body}) from the surrounding flow:
 \begin{align}
-\vec{F} &= \int_{S(u)}(-p(\vec{r}))d\vec{A} = -\int_{S(u)}\left(p_0-\frac{\rho}{2}\vec{u}^2(\vec{r})\right)d\vec{A} \\
-&= \frac{\rho}{2}\int_{S(u)}\vec{u}^2(\vec{r})d\vec{A}\\
+\vec{F} &= \int_{S}(-p(\vec{r}))d\vec{A} = -\int_{S}\left(p_0-\frac{\rho}{2}\vec{u}^2(\vec{r})\right)d\vec{A} \\
+&= \frac{\rho}{2}\int_{S}\vec{u}^2(\vec{r})d\vec{A}\\
 &= L\vec{e}_y +\underbrace{D\vec{e}_x}_{=0}.
 \end{align}
 $\vec{L}$ is the lift force and $\vec{D}$ is the drag force. The last term equals zero because there is no friction.
@@ -445,16 +445,16 @@ The solution is sketched in \fref{fig:blasius}.
 \subsection{Separation of boundary layers}
 Boundary condition at the wall:
 \begin{equation}
-v_x(x,y=0) = v_y(x,y=0)=0
+v_x(x,y=0) = u_y(x,y=0)=0
 \end{equation}
 
 Prandtl equation (with pressure)
 \begin{equation}
-v_x\pdiff{v_x}{x}+v_y\pdiff{v_x}{y} = -\frac{1}{\rho_0}\pdiff{p}{x}+\frac{\mu}{\rho_0}\ppdiff{v_x}{y}
+u_x\pdiff{u_x}{x}+u_y\pdiff{u_x}{y} = -\frac{1}{\rho_0}\pdiff{p}{x}+\frac{\mu}{\rho_0}\ppdiff{u_x}{y}
 \end{equation}
 If we are very close to the wall, the two terms on the left side equal zero. We then have
 \begin{equation}
-\pdiff{p(x,y=0)}{x}=\mu\ppdiff{v_x(x,y=0)}{y}
+\pdiff{p(x,y=0)}{x}=\mu\ppdiff{u_x(x,y=0)}{y}
 \end{equation}
 
 \begin{figure}[!h]
@@ -486,7 +486,7 @@ The detachment point is at the separation of the boundary layer. When $v\approx0
 \begin{framed}
 \textbf{Remark:} separation of boundary layers is a big issue in mechanical engineering; for example: design of airfoils, wind-turbine blades etc.
 {\center
-\includegraphics[width=.4\textwidth]{week5/detachment-eddies}\\
+\includegraphics[width=.6\textwidth]{week5/detachment-eddies}\\
 }
 In case of separation the lift decreases, which can lead to airplane crash. It would also lead to a substantial rise in the overall drag (more friction). This would require more engine power and therefore more fuel for an airplane. For a wind turbine it would means less power generation.
 
@@ -505,40 +505,40 @@ Engineer's dream: construct airfoils without turbulent wake, with e.g. shark ski
 
 We use the Prandtl equations with the similarity ansatz:
 \begin{equation}
-v_x(x,y)=v_\mathrm{max}(x)g\left(\frac{y}{\delta(x)}\right)
+u_x(x,y)=u_\mathrm{max}(x)g\left(\frac{y}{\delta(x)}\right)
 \end{equation}
 
 \begin{equation}
-\pdiff{v_x}{x}+\pdiff{v_y}{y}=0 \Rightarrow v_x=\pdiff{\psi}{y},\quad v_y=-\pdiff{\psi}{x}
+\pdiff{u_x}{x}+\pdiff{u_y}{y}=0 \Rightarrow u_x=\pdiff{\psi}{y},\quad u_y=-\pdiff{\psi}{x}
 \end{equation}
 
 \begin{equation}
-\psi = v_\mathrm{max}(x)\delta(x)f\left(\frac{y}{\delta(x)}\right)
+\psi = u_\mathrm{max}(x)\delta(x)f\left(\frac{y}{\delta(x)}\right)
 \end{equation}
 
 \begin{equation}
-\pdiff{\psi}{y}=v_\mathrm{max}\delta f'\frac{1}{\delta}=v_\mathrm{max}f'=v_\mathrm{max}g=v_x
+\pdiff{\psi}{y}=u_\mathrm{max}\delta f'\frac{1}{\delta}=u_\mathrm{max}f'=u_\mathrm{max}g=u_x
 \end{equation}
 
 \begin{equation}
-v_y=-\pdiff{\psi}{x}=-v'_\mathrm{max}\delta f-v_\mathrm{max}\delta'f-v_\mathrm{max}\delta f'\frac{(-y)\delta'}{\delta^2}
+u_y=-\pdiff{\psi}{x}=-v'_\mathrm{max}\delta f-u_\mathrm{max}\delta'f-u_\mathrm{max}\delta f'\frac{(-y)\delta'}{\delta^2}
 \end{equation}
 
 \begin{align}
-\partial_xv_x &= v'_\mathrm{max}f'+v_\mathrm{max}f''\frac{(-y)\delta'}{\delta^2} \\
-\partial_yv_x &= v_\mathrm{max} f''\frac{1}{\delta}\\
-\partial^2_yv_x &= \frac{v_\mathrm{max}}{\delta^2}f'''
+\partial_xu_x &= v'_\mathrm{max}f'+u_\mathrm{max}f''\frac{(-y)\delta'}{\delta^2} \\
+\partial_yu_x &= u_\mathrm{max} f''\frac{1}{\delta}\\
+\partial^2_yu_x &= \frac{u_\mathrm{max}}{\delta^2}f'''
 \end{align}
 Insertion into Prandtl's equation with $p(x)=\text{constant}$:
 \begin{align}
 \begin{split}
-v_x\partial_x v_x+v_y\partial_yv_x-\frac{\mu}{\rho_0}\partial^2_yv_x &= v_\mathrm{max}f'\left\lbrace v'_\mathrm{max}f' - v_\mathrm{max}\frac{y\delta'}{\delta^2}f''\right\rbrace \\
-&\hspace{5mm}-\left\lbrace v'_\mathrm{max}\delta f + v_\mathrm{max}\delta'f-v_\mathrm{max}\frac{y\delta'}{\delta}f'\right\rbrace v_\mathrm{max}\frac{1}{\delta}f'' \\
-&\hspace{5mm}-\frac{\mu}{\rho_0^2} \frac{v_\mathrm{max}}{\delta^2}f'''
+u_x\partial_x u_x+u_y\partial_yu_x-\frac{\mu}{\rho_0}\partial^2_yu_x &= u_\mathrm{max}f'\left\lbrace v'_\mathrm{max}f' - u_\mathrm{max}\frac{y\delta'}{\delta^2}f''\right\rbrace \\
+&\hspace{5mm}-\left\lbrace v'_\mathrm{max}\delta f + u_\mathrm{max}\delta'f-u_\mathrm{max}\frac{y\delta'}{\delta}f'\right\rbrace u_\mathrm{max}\frac{1}{\delta}f'' \\
+&\hspace{5mm}-\frac{\mu}{\rho_0^2} \frac{u_\mathrm{max}}{\delta^2}f'''
 \end{split}\\
 \begin{split}
-&= v_\mathrm{max}v'_\mathrm{max}f'^2-v_\mathrm{max}v'_\mathrm{max}ff''-v_\mathrm{max}^2\frac{\delta'}{\delta}ff'' \\
-&\hspace{5mm}-\frac{\mu}{\rho_0}\frac{v_\mathrm{max}}{\delta^2}f'''\label{eq:free-boundary}
+&= u_\mathrm{max}v'_\mathrm{max}f'^2-u_\mathrm{max}v'_\mathrm{max}ff''-u_\mathrm{max}^2\frac{\delta'}{\delta}ff'' \\
+&\hspace{5mm}-\frac{\mu}{\rho_0}\frac{u_\mathrm{max}}{\delta^2}f'''\label{eq:free-boundary}
 \end{split} \\
 &\require0 \label{eq:prandtl}
 \end{align}
@@ -546,7 +546,7 @@ All four terms in \eqref{eq:free-boundary} have the form $\alpha_i(x)\beta_i(x)$
 
 Ansatz:
 \begin{align}
-v_\mathrm{max}(x) &= c_1x^m\\
+u_\mathrm{max}(x) &= c_1x^m\\
 \delta(x) &= c_2 x^n
 \end{align}
 
@@ -572,7 +572,7 @@ This differential equation determines the velocity profile
 \begin{equation}
 g\left(\frac{y}{\delta(x)}\right)=f'\left(\frac{y}{\delta(x)}\right)
 \end{equation}
-of the jet. We are not going to solve this, but we want to know $m$ and $n$, because they determine $v_\mathrm{max}(x)$ and $\delta(x)$. We need a second equation for $m$ and $n$.
+of the jet. We are not going to solve this, but we want to know $m$ and $n$, because they determine $u_\mathrm{max}(x)$ and $\delta(x)$. We need a second equation for $m$ and $n$.
 
 \textbf{Second equation:} conservation of momentum flux.
 Momentum flux through the red plane in \fref{fig:momentum-flux} is identical to the momentum flux through the blue plane. This means that the integrated momentum flux does not depend on $x$.
@@ -584,13 +584,13 @@ Momentum flux through the red plane in \fref{fig:momentum-flux} is identical to 
 \end{figure}
 
 \begin{align}
-\mathrm{momentum} & =\rho_0\Delta V\cdot v_x\\
-&= \rho_0\Delta Av_x\Delta tv_x
+\mathrm{momentum} & =\rho_0\Delta V\cdot u_x\\
+&= \rho_0\Delta Au_x\Delta tu_x
 \end{align}
 
 Momentum flux:
 \begin{equation}
-\frac{\mathrm{momentum}}{\Delta A \Delta t} = \rho_0 v_x^2
+\frac{\mathrm{momentum}}{\Delta A \Delta t} = \rho_0 u_x^2
 \end{equation}
 
 \begin{framed}
@@ -598,31 +598,31 @@ Momentum flux:
 
 If
 \begin{equation}
-\int_{-\infty}^\infty \rho_0v_x^2(x)dy=\mathrm{constant}
+\int_{-\infty}^\infty \rho_0u_x^2(x)dy=\mathrm{constant}
 \end{equation}
 then
 \begin{equation}
-\diff{}{x}\int_{-\infty}^\infty \rho_0v_x^2(x)dy=0
+\diff{}{x}\int_{-\infty}^\infty \rho_0u_x^2(x)dy=0
 \end{equation}
 
 \begin{align}
-\diff{}{x}\int_{-\infty}^\infty \rho_0v_x^2(x)dy &= 2\rho_0\int_{-\infty}^\infty\left(v_x\pdiff{v_x}{x}\right)dy \label{eq:a}\\
-&= 2\mu\pdiff{v_x}{y}\biggm\vert_{-\infty}^\infty-2\rho_0\int_{-\infty}^\infty v_y\pdiff{v_x}{y}dy \label{eq:b}\\
-&=-2\rho_0v_xv_y\biggm\vert_{-\infty}^\infty + 2\rho_0 \int_{-\infty}^\infty\pdiff{v_y}{y}dy \label{eq:c}\\
-&= -2\rho_0\int_{-\infty}^\infty v_x\pdiff{v_x}{x}dy \label{eq:d}\\
+\diff{}{x}\int_{-\infty}^\infty \rho_0u_x^2(x)dy &= 2\rho_0\int_{-\infty}^\infty\left(u_x\pdiff{u_x}{x}\right)dy \label{eq:a}\\
+&= 2\mu\pdiff{u_x}{y}\biggm\vert_{-\infty}^\infty-2\rho_0\int_{-\infty}^\infty u_y\pdiff{u_x}{y}dy \label{eq:b}\\
+&=-2\rho_0u_xu_y\biggm\vert_{-\infty}^\infty + 2\rho_0 \int_{-\infty}^\infty\pdiff{u_y}{y}dy \label{eq:c}\\
+&= -2\rho_0\int_{-\infty}^\infty u_x\pdiff{u_x}{x}dy \label{eq:d}\\
 &= 0
 \end{align}
-Prandtl's equation \eqref{eq:prandtl} has been inserted into \eqref{eq:a} to obtain \eqref{eq:b}. The first term in \eqref{eq:b} is zero because $v_x(y)=\text{constant}$ for $y\rightarrow\pm\infty$. Partial integration has been used to arrive at \eqref{eq:c}. The incompressibility condition $\partial_xv_x+\partial_yv_y$ has been used to get \eqref{eq:d}. Since \eqref{eq:d} is equal to \eqref{eq:a} the integral has to be zero.
+Prandtl's equation \eqref{eq:prandtl} has been inserted into \eqref{eq:a} to obtain \eqref{eq:b}. The first term in \eqref{eq:b} is zero because $u_x(y)=\text{constant}$ for $y\rightarrow\pm\infty$. Partial integration has been used to arrive at \eqref{eq:c}. The incompressibility condition $\partial_xu_x+\partial_yu_y$ has been used to get \eqref{eq:d}. Since \eqref{eq:d} is equal to \eqref{eq:a} the integral has to be zero.
 \end{framed}
 
 \begin{align}
-\int_{-\infty}^\infty\rho_0v_x^2dy &= \rho_0\int_{-\infty}^\infty v_\mathrm{max}^2(x)g^2\left(\frac{y}{\delta(x)}\right)dy\\
-&= \rho_0v_\mathrm{max}^2(x)\delta(x)\int_{-\infty}^\infty g^2(z)dz\\
+\int_{-\infty}^\infty\rho_0u_x^2dy &= \rho_0\int_{-\infty}^\infty u_\mathrm{max}^2(x)g^2\left(\frac{y}{\delta(x)}\right)dy\\
+&= \rho_0u_\mathrm{max}^2(x)\delta(x)\int_{-\infty}^\infty g^2(z)dz\\
 &\require \mathrm{constant}
 \end{align}
 
 \begin{align}
-v_\mathrm{max}^2(x)\delta(x)&=\mathrm{constant}\\
+u_\mathrm{max}^2(x)\delta(x)&=\mathrm{constant}\\
 c_1^2x^{2m}c_2x^n &= \mathrm{constant}\\
 2m+n &= 0
 \end{align}
@@ -634,7 +634,7 @@ m=-\frac{1}{3}\ &,\qquad n=\frac{2}{3}
 \end{align}
 
 \begin{align}
-v_\mathrm{max}(x)&\sim\frac{1}{x^{1/3}}\\
+u_\mathrm{max}(x)&\sim\frac{1}{x^{1/3}}\\
 \delta(x)&\sim x^{2/3}
 \end{align}
 
@@ -648,6 +648,6 @@ Wake behind a wind turbine can be modeled as a negative jet.
 }
 
 \begin{equation}
-v_x(x,r) = v_\infty-v_\mathrm{center}(x)g\left(\frac{r}{\delta(x)}\right)
+u_x(x,r) = u_\infty-u_\mathrm{center}(x)g\left(\frac{r}{\delta(x)}\right)
 \end{equation}
 \end{framed}
