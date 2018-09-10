@@ -18,7 +18,7 @@ The equation states that the forces acting on the particle equals its change (th
 \begin{equation}
 \diff{}{t}\left(m\vec{u}\right) = \diff{m}{t}\vec{u}+m\diff{\vec{u}}{t}=\rho\Delta V\diff{\vec{u}}{t}.
 \end{equation}
-The mass of a fluid particle is constant and does not change over time, hence the time derivative term is zero. We also used the relation
+The mass of a fluid particle is constant and does not change over time, hence the term $dm/dt$ is zero. We also used the relation
 \begin{equation}
 m=\rho\Delta V.
 \end{equation}
@@ -73,7 +73,7 @@ This leads to the final expression
 \begin{framed}
 The material derivative is defined as
 \begin{equation}
-\diff{}{t}\partial_t+\vec{u}\cdot\vec{\nabla}=\frac{D}{Dt}=D_t.
+\partial_t+\vec{u}\cdot\vec{\nabla}=\frac{D}{Dt}=D_t.
 \end{equation}
 Whenever we have the time derivative of a field, like $\vec{u}(\vec{r},t)$, then we have to "go with the fluid particle" and use the material derivative.
 \end{framed}
@@ -158,7 +158,7 @@ Most general expression of the friction force:
 \end{equation}
 The task is to build a vector $\vec{f}$ from a combination of three vectors $\vec{a}=\vec{\nabla}, \vec{b}=\vec{\nabla}, \vec{c}=\vec{u}$, such that
 \begin{equation}
-\vec{f} = \alpha\left(\vec{a}\cdot\vec{b}\right)\vec{c} + \beta\left(\vec{a}\cdot\vec{c}\right)\vec{b} + \alpha \left(\vec{b}\cdot\vec{c}\right)\vec{a}
+\vec{f} = \alpha\left(\vec{a}\cdot\vec{b}\right)\vec{c} + \beta\left(\vec{a}\cdot\vec{c}\right)\vec{b} + \gamma \left(\vec{b}\cdot\vec{c}\right)\vec{a}
 \end{equation}
 The solution:
 \begin{equation}
@@ -300,6 +300,7 @@ Sum of mass fluxes through volume in all directions:
 \begin{pmatrix}
 \pdiff{}{x} \\ \pdiff{}{y} \\ \pdiff{}{z}
 \end{pmatrix}
+\cdot
 \begin{pmatrix}
 \rho u_x \\ \rho u_y \\ \rho u_z
 \end{pmatrix}

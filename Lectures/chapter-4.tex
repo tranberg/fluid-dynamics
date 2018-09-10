@@ -1,7 +1,7 @@
 \section{Ideal flow: planar 2-dimensional potential flow around cylinder}
 
 \begin{framed}
-For further details see section 4.3, 4.9 and 7.1-6 in the KCD book
+For further details see sections 4.3, 4.9 and 7.1-6 in the KCD book
 \end{framed}
 
 For a planar two-dimensional stationary flow the velocity field
@@ -26,11 +26,11 @@ Questions to \fref{fig:planar-flow}:
 \item How do the pathlines (streamlines) look like?
 \end{enumerate}
 \begin{equation}
-\vec{\nabla}\cdot\vec{u} = 0 \Rightarrow \vec{u}(\vec{r}) = \vec{\nabla}\phi(\vec{r})
+\vec{\nabla}\times\vec{u} = 0 \Rightarrow \vec{u}(\vec{r}) = \vec{\nabla}\phi(\vec{r})
 \end{equation}
 where $\phi(\vec{r})$ is the velocity potential.
 \begin{align}
-\vec{\nabla}\times\vec{u} &= 0\\
+\vec{\nabla}\cdot\vec{u} &= 0\\
 \leadsto
 \vec{\nabla}\cdot\vec{\nabla}\phi(\vec{r}) &= \left(\ppdiff{}{x}+\ppdiff{}{y}\right)\phi(x,y) = 0
 \end{align}
@@ -44,7 +44,7 @@ First boudary condition:
 \begin{align}
 \vec{u}(|\vec{r}|\rightarrow\infty) &= \vec{u}_\infty = u_\infty\vec{e}_x \\
 \leadsto
-\phi(|\vec{r}|\rightarrow\infty) &= u_\infty x + \mathrm{constant}
+\phi(|\vec{r}|\rightarrow\infty) &= u_\infty x + \mathrm{constant.}
 \end{align}
 Second boundary condition:
 \begin{equation}
@@ -101,7 +101,7 @@ Examples:
 \end{align}
 The two points in \eqref{eq:stagnation} with $\vec{u}=0$ are called stagnation points.
 
-\subsection{Pathline around a cylinder}
+\subsection{Stream line around a cylinder}
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.7\textwidth]{week3/pathline-cylinder}\\

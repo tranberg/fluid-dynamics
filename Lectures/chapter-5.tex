@@ -79,13 +79,13 @@ Velocity:
 &= \diff{w(z)}{z}\biggm\vert_{dz=idy} = \frac{\partial\phi}{i\partial y}+i\frac{\partial\psi}{i\partial y} = \pdiff{\psi}{y}-i\pdiff{\phi}{y} = u_x-iu_y
 \end{align}
 
-\textbf{Example 5:}
+\textbf{Example 4.1:}
 \begin{equation}
 w(z)=u_\infty z = u_\infty(x+iy) = u_\infty x + iu_\infty y
 \end{equation}
 describes the constant flow $\vec{u}=u_\infty \vec{e}_x$.
 
-\textbf{Example 6:}
+\textbf{Example 4.2:}
 \begin{align}
 w(z) &= \frac{m}{2\pi}\ln z = \frac{m}{2\pi} \ln(x+iy)\\
 &= \frac{m}{2\pi}\ln\left(re^{i\theta}\right)\\
@@ -94,24 +94,33 @@ w(z) &= \frac{m}{2\pi}\ln z = \frac{m}{2\pi} \ln(x+iy)\\
 \end{align}
 The two terms in the last line are the velocity potential and the stream function of a radial source flow (see "Example 1").
 
-\textbf{Example 7:}
+\textbf{Example 4.3:}
 \begin{align}
 w(z) &= \frac{A}{2}z^2 = \frac{A}{2}(x+iy)^2\\
 &= \frac{A}{2}(x^2-y^2)+iAxy
 \end{align}
 
-\textbf{Example 8:} flow around cylinder with radius $R$
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=.4\textwidth]{week4/stream-line.png}\\
+	\caption{Stream line around a corner}
+	\label{fig:corner_stream_line}
+\end{figure}
+
+\textbf{Example 4.4:} flow around cylinder with radius $R$
 \begin{align}
 w(z) &= \phi(x,y) +i\psi(x,y) = u_\infty x\left(1+\frac{R^2}{x^2+y^2}\right) + iu_\infty y \left(1-\frac{R^2}{x^2+y^2}\right) \\
 & =u_\infty(x+iy) + u_\infty R^2\frac{x-iy}{x^2+y^2} \\
 &= u_\infty(x+iy)+\frac{u_\infty R^2}{x+iy}\\
 &= u_\infty\left(z+\frac{R^2}{z}\right)
 \end{align}
+
+\textbf{Example 4.5:}
+
 Change of variable $(z\rightarrow\tilde{z})$:
 \begin{equation}
 z=z(\tilde{z})
 \end{equation}
-Example:
 \begin{align}
 \tilde{z} &= (z+z_0)+\frac{1}{z+z_0}\\
 \leadsto

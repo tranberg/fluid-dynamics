@@ -1,26 +1,16 @@
 \section{Forces on a 2-dimensional body}
-\begin{framed}
-Ideal potential flows:
-\begin{equation}
-\vec{\nabla}\cdot\vec{u}=0=\vec{\nabla}\times\vec{u}\Rightarrow\vec{\nabla}\cdot\vec{\nabla}\phi = \left(\ppdiff{}{x}+\ppdiff{}{y}\right)\phi=0
-\end{equation}
-Where is the Euler equation? Do we need it?
-\end{framed}
-For an ideal potential flow the Euler equation
-\begin{equation}
-\rho \left(\pdiff{\vec{u}}{t}+\left(\vec{u}\cdot\vec{\nabla}\right)\vec{u}\right) = \rho \vec{f} - \vec{\nabla}p + \mu\left(\vec{\nabla}\cdot\vec{\nabla}\right)\vec{u}
-\end{equation}
-reduces to the Bernoulli equation:
+
+With the Bernoulli equation, 
 \begin{equation}
 \vec{\nabla}\left(\frac{\rho}{2}\vec{u}^2+p\right)=0.
 \end{equation}
-With the Bernoulli equation (leftover from the Euler equation) we can calculate the force on the "obstacle" (\fref{fig:2dim-body}) from the surrounding flow:
+we can calculate the force on the "obstacle" (\fref{fig:2dim-body}) from the surrounding flow:
 \begin{align}
 \vec{F} &= \int_{S}(-p(\vec{r}))d\vec{A} = -\int_{S}\left(p_0-\frac{\rho}{2}\vec{u}^2(\vec{r})\right)d\vec{A} \\
 &= \frac{\rho}{2}\int_{S}\vec{u}^2(\vec{r})d\vec{A}\\
 &= L\vec{e}_y +\underbrace{D\vec{e}_x}_{=0}.
 \end{align}
-$\vec{L}$ is the lift force and $\vec{D}$ is the drag force. The last term equals zero because there is no friction.
+$\vec{L}$ is the lift force and $\vec{D}$ is the drag force. The last term equals zero because there is no friction in ideal flows.
 
 \begin{figure}[!h]
     \centering
@@ -48,7 +38,7 @@ C_D = \frac{D}{\frac{\rho}{2}v_\infty^2 b c}
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.5\textwidth]{week4/generic-lift}\\
-    \caption{Generic lift and drag coefficients vs. angle of attack. There is lift at $\alpha=0$ so the foil shape has nonzero camber. The drag increase is almost quadratic with increasing angle of attack.}
+    \caption{Generic lift and drag coefficients vs. angle of attack.}
     \label{fig:generic-lift}
 \end{figure}
 
@@ -58,7 +48,7 @@ The lift force pulls the rotor blade of a wind turbine forward. See \fref{fig:tu
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.6\textwidth]{week4/turbine-blade}\\
-    \caption{Lift and drag forces on the rotor blade of a wind turbine.}
+    \caption{Lift force on the rotor blade of a wind turbine.}
     \label{fig:turbine-blade}
 \end{figure}
 
