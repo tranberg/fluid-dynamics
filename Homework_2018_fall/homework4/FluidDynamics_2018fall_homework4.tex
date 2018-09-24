@@ -1,0 +1,62 @@
+\documentclass[a4paper, 10pt]{article}
+
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[sc]{mathpazo}
+\usepackage{color}
+
+% Various spacing parameters
+\usepackage{microtype}
+\usepackage[margin=3.5cm]{geometry}
+\linespread{1}
+\parindent 0pt
+\parskip 4pt
+
+% Helping functions
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}} % Partial derivative
+
+% Spacing inside description environment
+\usepackage{enumitem}
+\setlist[description]{style=multiline,leftmargin=.8cm,parsep=4pt}
+
+\title{Fluid Dynamics + Turbulence (fall 2018)\\Homework Problems IV + voluntary Exercises}
+\author{}
+\date{}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+
+\large{
+\textbf{Posted:}
+
+\today
+
+\bigskip
+\textbf{Deadline for submission of homework problem:}
+
+October 2 (Tuesday) at 08:30 am (on Blackboard).
+}
+
+\bigskip
+
+\section*{Homework problem 4.1: Lift forces on a half-buried cylindrical worm}
+A cylindrical worm with radius 3 mm lies half buried in sand at the bottom of a river. Its density is 10\% higher than the density of water. The water is streaming over the worm. Calculate the critical water speed at which the worm is lifted out of the sand.
+
+Hints: Use the results from an ideal flow around a cylinder. Use cylindrical coordinates. Determine the velocity at the cylinder surface. Use Bernoulli’s equation to determine the pressure on the cylinder surface, from which you can calculate the lift force acting on the worm.
+
+\section*{Homework problem 4.2: Laminar flow between two coaxial tubes}
+Consider a steady laminar flow through the annular space formed by two coaxial tubes aligned with the z-axis. The flow is along the axis of the tubes and is maintained by a pressure gradient dp/dz. Show that the axial velocity at any radius R is
+\begin{equation}
+u_z(R) = \frac{1}{4\mu}\frac{dp}{dz}\left[ R^2-a^2-\frac{b^2-a^2}{ln(b/a)}ln\frac{R}{a} \right],
+\end{equation}
+where a is the radius of the inner tube and b is the radius of the outer tube. Find the radius at which the maximum velocity is reached, and the volume flow rate.
+
+\section{Exercise 4: Reading}
+Read the Sections 7.5 (6.5 in old edition) and 14.1-14.7 in the book PK Kundu, IM Cohen + DR Dowling: Fluid Mechanics (see the folder "ReadingMaterial’ on the course homepage) on aerodynamics and airfoils.
+\end{document}
